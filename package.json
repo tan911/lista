@@ -1,0 +1,60 @@
+{
+    "name": "lista",
+    "version": "1.0.0",
+    "description": "Credit Management Application",
+    "main": "server.js",
+    "scripts": {
+        "build": "pnpm build:ts && pnpm build:css",
+        "start": "node dist/server.js",
+        "dev": "nodemon src/server.ts && build:css -w",
+        "clean": "rm -rf node_modules && rm -rf dist",
+        "lint": "tsc --noEmit & eslint src/**/*.ts --config .eslint.config.js --fix",
+        "format": "prettier . --write",
+        "build:ts": "npx tsc",
+        "build:css": "tailwindcss -i ./public/css/input.css -o ./public/css/output.css",
+        "db:generate": "prisma generate",
+        "db:seed": "prisma db seed",
+        "db:push": "prisma db push",
+        "db:migrate": "prisma migrate dev",
+        "db:studio": "prisma db studio"
+    },
+    "author": "Jovan Lanutan <jolanutan@gmail.com>",
+    "license": "ISC",
+    "dependencies": {
+        "@auth/express": "^0.5.5",
+        "@prisma/client": "^5.15.0",
+        "autoprefixer": "^10.4.19",
+        "cors": "^2.8.5",
+        "dotenv": "^16.4.5",
+        "express": "^4.19.2",
+        "express-async-errors": "^3.1.1",
+        "morgan": "^1.10.0",
+        "pug": "^3.0.3",
+        "winston": "^3.13.0",
+        "zod": "^3.23.8"
+    },
+    "devDependencies": {
+        "@faker-js/faker": "^8.4.1",
+        "@types/cors": "^2.8.17",
+        "@types/express": "^4.17.21",
+        "@types/morgan": "^1.9.9",
+        "@types/node": "^20.14.2",
+        "@typescript-eslint/eslint-plugin": "^7.13.0",
+        "@typescript-eslint/parser": "^7.13.0",
+        "eslint": "^9.4.0",
+        "eslint-config-prettier": "^9.1.0",
+        "eslint-plugin-import": "^2.29.1",
+        "eslint-plugin-node": "^11.1.0",
+        "eslint-plugin-prettier": "^5.1.3",
+        "nodemon": "^3.1.3",
+        "prettier": "^3.3.1",
+        "prisma": "^5.15.0",
+        "tailwindcss": "^3.4.4",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.4.5"
+    },
+    "prisma": {
+        "seed": "ts-node --transpile-only db/seed.ts",
+        "schema": "db/prisma/schema.prisma"
+    }
+}
