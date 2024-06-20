@@ -6,9 +6,10 @@ const logger = createLogger('verbose')
 
 export function errorHandler(
     err: AppError | Error,
-    req: Request,
+    _req: Request,
     res: Response,
-    next: NextFunction
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    _next: NextFunction
 ) {
     logger.error(err.message)
     res.status(('httpCode' in err && err.httpCode) || 500).json({
@@ -17,6 +18,6 @@ export function errorHandler(
     })
 }
 
-export function errorNotFoundHandler(req: Request, res: Response, next: NextFunction) {
+export function errorNotFoundHandler(_req: Request, _res: Response, next: NextFunction) {
     next(new NotFoundError('Fail', 'Not Found', 404))
 }
