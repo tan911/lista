@@ -11,6 +11,7 @@ type Ouput<TInput, TOuput, TContext> = {
 class EndpointFactory<TContext> {
     constructor(private context: (res: Response) => TContext | Promise<TContext>) {}
     public create<TInput, TOuput>(args: {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         input: any | undefined
         output: Ouput<TInput, TOuput, TContext>
     }) {
@@ -29,6 +30,7 @@ class EndpointFactory<TContext> {
 
             if (!ctx) return res.status(401).json({ message: 'unauthorize' })
 
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             args.output({ ctx, req, input: validatedInput as any })
                 .then((opt) => res.status(200).json(opt))
                 .catch((error) => new Error(error))
@@ -36,7 +38,8 @@ class EndpointFactory<TContext> {
     }
 }
 
-async function context(res: Response) {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+async function context(_res: Response) {
     const user = await prisma.user.findUnique({
         where: {
             email: 'Gideon.Kemmer@yahoo.com',
