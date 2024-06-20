@@ -15,7 +15,7 @@ app.set('view engine', 'pug')
 app.set('views', path.join(__dirname, 'views'))
 
 // Static files
-app.use(express.static('public'))
+app.use(express.static('dist'))
 
 // Parse incoming requests data
 app.use(express.urlencoded({ extended: false }))
