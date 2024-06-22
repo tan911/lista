@@ -1,8 +1,8 @@
 import { transaction } from './../services'
 
 export class TransactionController {
-    async getUserTransaction(id: string) {
-        return await transaction.get('clxhllgxe00008aty1lvp8t3o')
+    async getUserTransaction(id = 'clxhllgxe00008aty1lvp8t3o') {
+        return await transaction.get(id)
     }
 
     async getTransactionById(id: string) {

@@ -1,0 +1,15 @@
+header(class="flex items-center justify-center h-[64px] border border-b-[#E0Es0E0]")
+	nav(class="flex items-center justify-between w-[1440px] px-10")
+		div(class="flex") 
+			a(href="#" class="mr-10 font-bold text-2xl tracking-tight") Lista 
+			ul(class="flex items-center gap-5 text-base") 
+				li 
+					a(href="/dashboard" class=(routeName === 'overview' ? 'font-medium p-1' : 'text-gray-500 p-1 hover:text-gray-900')) Overview
+				li 
+					a(href="/dashboard/customers" class=(routeName === 'customers' ? 'font-medium p-1' : 'text-gray-500 p-1 hover:text-gray-900')) Customers
+				li 
+					a(href="/dashboard/transactions" class=(routeName === 'transactions' ? 'font-medium p-1' : 'text-gray-500 p-1 hover:text-gray-900')) Transactions
+		div(class="flex items-center justify-center gap-2")
+			div(class="mr-10") 
+				a(href= url+'/add-credit?show=true' class="block py-1.5 px-3 rounded-md bg-neutral-950 text-neutral-100 font-medium hover:bg-neutral-800") Add credit
+			button(type="button" class="inline-block h-9 w-9 rounded-full bg-gray-400")

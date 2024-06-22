@@ -4,7 +4,7 @@ import morgan from 'morgan'
 import path from 'path'
 
 import { createLogger } from '../lib/logger'
-import { transactionRouter } from './routes'
+import { transactionRouter, viewRouter } from './routes'
 import { errorHandler, errorNotFoundHandler } from './middlewares/error_middleware'
 
 const app = express()
@@ -32,10 +32,10 @@ app.use(
     })
 )
 
+// Views routes
+app.use('/dashboard', viewRouter)
+
 // Api routes
-app.use('/', (req, res) => {
-    res.status(200).render('base')
-})
 app.use('/api/v1/transactions', transactionRouter)
 
 // Error handlers

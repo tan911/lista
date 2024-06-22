@@ -2,6 +2,10 @@ import { prisma } from '../../db'
 import { Request, Response, NextFunction } from 'express'
 import { TransactionController } from './transaction_controller'
 
+/**
+ * API CONTROLLER
+ *
+ */
 const transaction = new TransactionController()
 
 type Ouput<TInput, TOuput, TContext> = {
@@ -49,3 +53,17 @@ async function context(_res: Response) {
 }
 
 export const endpoint = new EndpointFactory(context)
+
+/**
+ * VIEW CONTROLLER
+ *
+ */
+
+export {
+    getOverview,
+    getOverviewModal,
+    getCustomerModal,
+    getCustomerView,
+    getTransactionModal,
+    getTransactionView,
+} from './view_controller'
