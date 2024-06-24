@@ -9,3 +9,21 @@ body {
     font-style: normal;
     font-variation-settings: 'slnt' 0;
 }
+
+@layer utilities {
+    .ac-modal-overlay {
+        @apply bg-stone-950/[0.8] overflow-y-auto overflow-x-hidden fixed top-0 left-0 w-full h-full md:inset-0 z-10;
+    }
+
+    .ac-modal-btn-close {
+        @apply ring-focus self-start rounded-md border border-['#E0Es0E0'] p-1.5 text-stone-700 text-sm font-medium drop-shadow-sm transition-all ease-in-out duration-300;
+    }
+
+    .ac-modal-input {
+        @apply ring-focus w-full px-2 py-1.5 border border-b-['#E0Es0E0'] rounded-md;
+    }
+
+    .ring-focus {
+        @apply focus:ring focus:ring-stone-900 focus:ring-offset-2 focus:outline-none;
+    }
+}

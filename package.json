@@ -6,11 +6,11 @@
     "scripts": {
         "build": "pnpm build:ts && pnpm build:css",
         "start": "node dist/server.js",
-        "dev": "conc \"nodemon src/server.ts\" \"nodemon -e pug\"  \"pnpm build:css -w\" \"pnpm build:ts\"",
+        "dev": "conc \"nodemon src/server.ts public/js/index.ts\" \"pnpm build:css -w\" \"pnpm build:ts --watch\"",
         "clean": "rm -rf node_modules && rm -rf dist",
         "lint": "tsc --noEmit && eslint src/**/*.ts --fix",
         "format": "prettier . --write",
-        "build:ts": "npx tsc",
+        "build:ts": "tsup",
         "build:css": "tailwindcss -i public/css/input.css -o dist/public/css/output.css",
         "db:generate": "prisma generate",
         "db:seed": "prisma db seed",
@@ -50,11 +50,23 @@
         "prisma": "^5.15.0",
         "tailwindcss": "^3.4.4",
         "ts-node": "^10.9.2",
+        "tsup": "^8.1.0",
         "typescript": "^5.4.5",
         "typescript-eslint": "^7.13.1"
     },
     "prisma": {
         "seed": "ts-node --transpile-only db/seed.ts",
         "schema": "db/prisma/schema.prisma"
+    },
+    "tsup": {
+        "entry": [
+            "src/server.ts",
+            "public/js/index.ts"
+        ],
+        "splitting": false,
+        "outDir": "dist",
+        "bundle": true,
+        "minify": true,
+        "sourcemap": true
     }
 }

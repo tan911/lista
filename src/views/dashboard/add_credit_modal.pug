@@ -5,3 +5,36 @@ else if layoutToExtend === 'customer_view'
 	include pages/customer_view
 else if layoutToExtend === 'transaction_view'
 	include pages/transaction_view
+
+
+div(aria-modal="true" role="dialog" class="overflow-y-auto overflow-x-hidden absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-50")
+	div(class="w-full m-w-[800px] bg-white rounded-lg shadow p-10 drop-shadow-lg md:w-[800px]")
+		div(class="flex items-center justify-between pb-5 border-b border-['#E0Es0E0']")
+			div 
+				h3(class="font-bold text-2xl") Create Credit
+				p Lorem ipsum dolor sit amet consectetur adipisicing elit! 
+			a(href= closeModalUrl id="ac-modal-close" aria-label="close" class="ac-modal-btn-close") Close
+					
+		div(class="w-full py-5")
+			form(action="" class="grid grid-cols-2 gap-10")
+				div(class="py-2") 
+					label(for="creditors" class="block mb-2") Name of Creditors 
+					input(id="creditors" type="text" placeholder="Ex. Juan Dela Cruz" class="ac-modal-input" name="creditors")  
+				div(class="py-2") 
+					label(for="products" class="block mb-2") Name of Products 
+					input(id="products" type="text" placeholder="Ex. Lemonade" class="ac-modal-input" name="products")
+				div(class="flex gap-4 py-2")   
+					div
+						label(for="quantity" class="block mb-2") Quantity 
+						input(id="name-of-creditors" type="number" placeholder="Qty" class="ac-modal-input" name="quantity")
+					div
+						label(for="date" class="block mb-2") Date 
+						input(id="date" type="date" placeholder="date" class="ac-modal-input" name="date")
+				div(class="py-2")
+					label(for="transaction-type" class="block mb-2 text-md") Transaction Category 
+					select(id="transaction-type" class="ring-focus border border-['#E0Es0E0'] w-full px-2 py-1.5 rounded-md")
+						option(selected value="cash") Cash 
+						option(value="credit") Credit
+				button(type="submit" class="ring-focus bg-stone-900 hover:bg-stone-800 text-white py-2 px-16 rounded-md mt-20 col-span-2 place-self-end") Add
+
+div(class="ac-modal-overlay")

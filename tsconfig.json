@@ -15,7 +15,8 @@
         "skipLibCheck": true,
         "sourceMap": true,
         "strict": true,
-        "target": "ES2022"
+        "target": "ES2022",
+        "lib": ["dom"]
     },
     "include": ["src/**/*.ts", "lib/**/*.ts", "public/js/*.ts"],
     "exclude": ["node_modules", "dist"]
