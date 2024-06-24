@@ -17,9 +17,8 @@ export async function getOverviewModal(req: Request, res: Response) {
     return res.status(200).render('dashboard/add_credit_modal', {
         cssPath: '../../public/css/output.css',
         jsPath: '../../public/js/index.js',
-        url: req.originalUrl,
+        url: '/dashboard',
         modalLayout: 'overview_view',
-        closeModalUrl: '/dashboard',
     })
 }
 
@@ -42,9 +41,8 @@ export async function getCustomerModal(req: Request, res: Response) {
         cssPath: '../../public/css/output.css',
         jsPath: '../../public/js/index.js',
         routeName: 'customers',
-        url: req.originalUrl,
+        url: '/dashboard/customers',
         modalLayout: 'customer_view',
-        closeModalUrl: '/dashboard/customers',
     })
 }
 
@@ -67,8 +65,7 @@ export async function getTransactionModal(req: Request, res: Response) {
         cssPath: '../../public/css/output.css',
         jsPath: '../../public/js/index.js',
         routeName: 'transactions',
-        url: req.originalUrl,
+        url: '/dashboard/transactions',
         modalLayout: 'transaction_view',
-        closeModalUrl: '/dashboard/transactions',
     })
 }
