@@ -8,7 +8,7 @@ router.get(
     endpoint.create({
         input: undefined,
         output: async ({ ctx }) => {
-            return await ctx.transaction.getUserTransaction('sd')
+            return await ctx.transaction.getUserTransaction(ctx.user?.id)
         },
     })
 )

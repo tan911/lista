@@ -1,11 +1,16 @@
 import type { Request, Response } from 'express'
+import { transaction } from '../services'
 
 export async function getOverview(req: Request, res: Response) {
-    return res.status(200).render('dashboard/pages/overview_view', {
-        cssPath: 'public/css/output.css',
-        jsPath: 'public/js/index.js',
+    const revenue = await transaction.getRevenue()
+
+    return res.status(200).render('pages/dashboard/overview_html', {
+        styles: 'public/css/output.css',
+        javascript: 'public/js/index.js',
         routeName: 'overview',
         url: req.originalUrl,
+        showModal: false,
+        revenue,
     })
 }
 export async function getOverviewModal(req: Request, res: Response) {
@@ -14,21 +19,25 @@ export async function getOverviewModal(req: Request, res: Response) {
         return res.redirect('/dashboard')
     }
 
-    return res.status(200).render('dashboard/add_credit_modal', {
-        cssPath: '../../public/css/output.css',
-        jsPath: '../../public/js/index.js',
+    const revenue = await transaction.getRevenue()
+
+    return res.status(200).render('pages/dashboard/overview_html', {
+        styles: '../../public/css/output.css',
+        javascript: '../../public/js/index.js',
         url: '/dashboard',
-        modalLayout: 'overview_view',
+        routeName: 'overview',
+        showModal: true,
+        revenue,
     })
 }
 
 export async function getCustomerView(req: Request, res: Response) {
-    return res.status(200).render('dashboard/pages/customer_view', {
-        cssPath: '../public/css/output.css',
-        jsPath: '../public/js/index.js',
+    return res.status(200).render('pages/dashboard/customer_html', {
+        styles: '../public/css/output.css',
+        javascript: '../public/js/index.js',
         routeName: 'customers',
         url: req.originalUrl,
-        modalLayout: 'customer_view',
+        showModal: false,
     })
 }
 export async function getCustomerModal(req: Request, res: Response) {
@@ -37,21 +46,22 @@ export async function getCustomerModal(req: Request, res: Response) {
         return res.redirect('/dashboard/customers')
     }
 
-    return res.status(200).render('dashboard/add_credit_modal', {
-        cssPath: '../../public/css/output.css',
-        jsPath: '../../public/js/index.js',
+    return res.status(200).render('pages/dashboard/customer_html', {
+        styles: '../../public/css/output.css',
+        javascript: '../../public/js/index.js',
         routeName: 'customers',
         url: '/dashboard/customers',
-        modalLayout: 'customer_view',
+        showModal: true,
     })
 }
 
 export async function getTransactionView(req: Request, res: Response) {
-    return res.status(200).render('dashboard/pages/transaction_view', {
-        cssPath: '../public/css/output.css',
-        jsPath: '../../public/js/index.js',
+    return res.status(200).render('pages/dashboard/transaction_html', {
+        styles: '../public/css/output.css',
+        javascript: '../../public/js/index.js',
         routeName: 'transactions',
         url: req.originalUrl,
+        showModal: false,
     })
 }
 
@@ -61,11 +71,11 @@ export async function getTransactionModal(req: Request, res: Response) {
         return res.redirect('/dashboard/transactions')
     }
 
-    return res.status(200).render('dashboard/add_credit_modal', {
-        cssPath: '../../public/css/output.css',
-        jsPath: '../../public/js/index.js',
+    return res.status(200).render('pages/dashboard/transaction_html', {
+        styles: '../../public/css/output.css',
+        javascript: '../../public/js/index.js',
         routeName: 'transactions',
         url: '/dashboard/transactions',
-        modalLayout: 'transaction_view',
+        showModal: true,
     })
 }

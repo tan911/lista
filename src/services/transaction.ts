@@ -16,4 +16,28 @@ export class TransactionService {
             where: { id: id },
         })
     }
+
+    public async getRevenue() {
+        const [cash, credit] = await this.prisma.$transaction([
+            this.prisma.transaction.findMany({
+                where: {
+                    transactionType: 'cash',
+                },
+            }),
+            this.prisma.transaction.findMany({
+                where: {
+                    transactionType: 'credit',
+                },
+            }),
+        ])
+
+        const cashRevenue = cash.reduce((acc, curr) => acc + curr.totalAmount, 0)
+        const creditRevenue = credit.reduce((acc, curr) => acc + curr.totalAmount, 0)
+
+        return {
+            cashRevenue,
+            creditRevenue,
+            totalRevenue: cashRevenue + creditRevenue,
+        }
+    }
 }
