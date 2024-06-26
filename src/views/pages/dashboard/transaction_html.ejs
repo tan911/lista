@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en">
+    <%- include('../../layout/head_html'); -%>
+
+    <body class="m-h-screen antialised">
+        <%- include('includes/_header_html'); -%>
+
+        <main class="px-10 w-[1440px] mx-auto">Hello Transaction View</main>
+
+        <% if (showModal) { %>
+            <%- include('../../dialog/add_credit_html'); -%>
+        <% }; %>
+    </body>
+</html>

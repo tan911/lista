@@ -11,7 +11,7 @@ const app = express()
 const logger = createLogger('verbose')
 
 // Templating engine
-app.set('view engine', 'pug')
+app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
 
 // Static files
