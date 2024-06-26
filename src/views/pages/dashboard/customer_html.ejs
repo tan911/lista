@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+    <%- include('../../layout/head_html'); -%>
+
+    <body class="m-h-screen antialised">
+
+        <%- include('includes/_header_html'); -%>
+
+        <main class="px-10 w-[1440px] mx-auto">
+            <div class="flex justify-between items-center my-10">
+                <div class="text-sm">
+                    <label for="search" class="sr-only">Search</label>
+                    <input id="search" type="text" name="search" class="search-input sm:w-[300px] md:w-[200px] lg:w-[300px]" placeholder="Search customers..." />
+                </div>
+                <div class="text-sm flex items-center gap-2">
+                    <button type="button" aria-label="Filter" class="flex items-center gap-1 px-3 py-1 border border-b-['#E0Es0E0'] rounded-md hover:bg-gray-100">
+                        <img src="../../public/assets/icon/filter.svg" alt="Filter" class="h-4 w-4" />
+                        <span>Filter</span>
+                    </button>
+                    <button>Add customer</button>
+                </div>
+            </div>
+        </main>
+
+        <% if (showModal) { %>
+            <%- include('../../dialog/add_credit_html'); -%>
+        <% }; %>
+    </body>
+</html>

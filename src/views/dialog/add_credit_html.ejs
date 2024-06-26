@@ -1,0 +1,82 @@
+<div
+    aria-modal="true"
+    role="dialog"
+    class="overflow-y-auto overflow-x-hidden absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-50"
+>
+    <div class="w-full m-w-[800px] bg-white rounded-lg shadow p-10 drop-shadow-lg md:w-[800px]">
+        <div class="flex items-center justify-between pb-5 border-b border-['#E0Es0E0']">
+            <div>
+                <h3 class="font-bold text-2xl">Create Credit</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit!</p>
+            </div>
+            <a href="<%= url %>" id="ac-modal-close" aria-label="close" class="ac-modal-btn-close"
+                >Close</a
+            >
+        </div>
+        <div class="w-full py-5">
+            <form action="" class="grid grid-cols-2 gap-10">
+                <div class="py-2">
+                    <label for="creditors" class="block mb-2">Name of Creditors</label>
+                    <input
+                        id="creditors"
+                        type="text"
+                        placeholder="Ex. Juan Dela Cruz"
+                        class="ac-modal-input"
+                        name="creditors"
+                    />
+                </div>
+                <div class="py-2">
+                    <label for="products" class="block mb-2">Name of Products</label>
+                    <input
+                        id="products"
+                        type="text"
+                        placeholder="Ex. Lemonade"
+                        class="ac-modal-input"
+                        name="products"
+                    />
+                </div>
+                <div class="flex gap-4 py-2">
+                    <div>
+                        <label for="quantity" class="block mb-2">Quantity</label>
+                        <input
+                            id="quantity"
+                            type="number"
+                            placeholder="Qty"
+                            class="ac-modal-input"
+                            name="quantity"
+                        />
+                    </div>
+                    <div>
+                        <label for="date" class="block mb-2">Date</label>
+                        <input
+                            id="date"
+                            type="date"
+                            placeholder="date"
+                            class="ac-modal-input"
+                            name="date"
+                        />
+                    </div>
+                </div>
+                <div class="py-2">
+                    <label for="transaction" class="block mb-2 text-md">Transaction Category</label>
+                    <select
+                        id="transaction"
+                        class="ring-focus border border-['#E0Es0E0'] w-full px-2 py-1.5 rounded-md"
+                        name="transaction"
+                    >
+                        <option selected value="credit">Credit</option>
+                        <option value="cash">Cash</option>
+                    </select>
+                </div>
+                <button
+                    type="submit"
+                    class="ring-focus bg-stone-900 hover:bg-stone-800 text-white py-2 px-16 rounded-md mt-20 col-span-2 place-self-end"
+                >
+                    Add
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="ac-modal-overlay"></div>
