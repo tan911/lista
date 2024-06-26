@@ -10,6 +10,15 @@ body {
     font-variation-settings: 'slnt' 0;
 }
 
+@keyframes blow-up {
+    0% {
+        transform: scale(0.5);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
 @layer utilities {
     .ac-modal-overlay {
         @apply bg-stone-950/[0.8] overflow-y-auto overflow-x-hidden fixed top-0 left-0 w-full h-full md:inset-0 z-10;
@@ -25,5 +34,24 @@ body {
 
     .ring-focus {
         @apply focus:ring focus:ring-stone-900 focus:ring-offset-2 focus:outline-none;
+    }
+
+    .nav-list {
+        @apply text-gray-500 p-1 hover:text-gray-900;
+    }
+
+    .nav-list_active {
+        @apply font-medium p-1;
+    }
+
+    .animate-modal {
+        animation-name: blow-up;
+        animation-duration: 0.5s;
+        animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+        animation-fill-mode: forwards;
+    }
+
+    .search-input {
+        @apply ring-focus w-full border border-b-['#E0Es0E0'] rounded-md px-3 py-2;
     }
 }
