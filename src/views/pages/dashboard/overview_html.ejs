@@ -1,28 +1,14 @@
-<!doctype html>
-<html lang="en">
+<%- include(render_layouts+'/dashboard_html'); -%>
 
-    <%- include('../../layout/head_html'); -%>
-
-    <body class="m-h-screen antialised">
-
-        <%- include('includes/_header_html'); -%>
-
-        <main class="px-10 w-[1440px] mx-auto">
-            <%- include('../../overview/segmented_control_html') -%>
-
-            <%- include('../../overview/card_metrics_html') -%>
-            
-             <div class="mt-10 flex gap-10 justify-between">
-
-                <div id="container" class="h-[448px] w-[790px] rounded-xl border border-b-['#E0E0E0'] shadow-sm"></div>
-                
-                 <%- include('../../overview/top_customer_html') -%>
-                 
-             </div>
-        </main>
-
-        <% if (showModal) { %>
-            <%- include('../../dialog/add_credit_html'); -%>
-        <% }; %>
-    </body>
-</html>
+<main class="px-10 w-[1440px] mx-auto">
+    <%- include(render_overview+'segmented_control_html') -%>
+    <!-- metrics -->
+    <%- include(render_overview+'card_metrics_html') -%>
+    <div class="mt-10 flex gap-10 justify-between">
+        <div
+            id="container"
+            class="h-[448px] w-[790px] rounded-xl border border-b-['#E0E0E0'] shadow-sm"
+        ></div>
+        <%- include(render_overview+'top_customer_html') -%>
+    </div>
+</main>

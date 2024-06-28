@@ -52,6 +52,6 @@ body {
     }
 
     .search-input {
-        @apply ring-focus w-full border border-b-['#E0Es0E0'] rounded-md px-3 py-2;
+        @apply ring-focus w-full border border-b-['#E0Es0E0'] rounded-md pr-3 pl-8 py-2;
     }
 }

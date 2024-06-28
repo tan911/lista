@@ -1,29 +1,42 @@
-<!doctype html>
-<html lang="en">
-    <%- include('../../layout/head_html'); -%>
+<%- include(render_layouts+'dashboard_html'); -%>
 
-    <body class="m-h-screen antialised">
-
-        <%- include('includes/_header_html'); -%>
-
-        <main class="px-10 w-[1440px] mx-auto">
-            <div class="flex justify-between items-center my-10">
-                <div class="text-sm">
-                    <label for="search" class="sr-only">Search</label>
-                    <input id="search" type="text" name="search" class="search-input sm:w-[300px] md:w-[200px] lg:w-[300px]" placeholder="Search customers..." />
-                </div>
-                <div class="text-sm flex items-center gap-2">
-                    <button type="button" aria-label="Filter" class="flex items-center gap-1 px-3 py-1 border border-b-['#E0Es0E0'] rounded-md hover:bg-gray-100">
-                        <img src="../../public/assets/icon/filter.svg" alt="Filter" class="h-4 w-4" />
-                        <span>Filter</span>
-                    </button>
-                    <button>Add customer</button>
-                </div>
+<main class="px-10 w-[1440px] mx-auto">
+    <div class="flex justify-between items-center my-10">
+        <%- include(render_customers+'search_html'); -%>
+        <div class="text-sm flex items-center gap-2">
+            <div>
+                <button
+                    type="button"
+                    aria-label="Filter"
+                    class="flex items-center gap-1 px-3 py-1 border border-b-['#E0Es0E0'] rounded-md hover:bg-gray-100"
+                >
+                    <img src="../../icon/filter.svg" alt="Filter" class="h-4 w-4" />
+                    <span>Filter</span>
+                </button>
+                <ul>
+                    <li><a href=""></a></li>
+                </ul>
             </div>
-        </main>
-
-        <% if (showModal) { %>
-            <%- include('../../dialog/add_credit_html'); -%>
-        <% }; %>
-    </body>
-</html>
+            <button>Add customer</button>
+        </div>
+    </div>
+    <div>
+        <div class="w-full h-[700px] border border-b-['#E0Es0E0'] rounded-md">
+            <div class="p-6">
+                <h3 class="font-bold text-2xl">Customers</h3>
+                <p class="text-gray-500">Manage your customers account.</p>
+            </div>
+            <div class="p-6 pt-0 w-full mb-auto">
+                <%- include(render_customers+'table_html'); -%>
+            </div>
+            <div class="flex justify-between items-center px-6 pb-6 mt-[150px]">
+                <div class="text-sm text-gray-500">
+                    Showing
+                    <span> <strong>1</strong>-<strong>7</strong> </span>
+                    of <strong>50</strong> customers
+                </div>
+                <div>pagination</div>
+            </div>
+        </div>
+    </div>
+</main>

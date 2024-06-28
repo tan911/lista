@@ -66,4 +66,5 @@ export {
     getCustomerView,
     getTransactionModal,
     getTransactionView,
-} from './view_controller'
+    getCustomerById,
+} from './views_controller/index'

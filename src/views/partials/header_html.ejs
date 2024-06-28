@@ -1,0 +1,30 @@
+<header class="flex items-center justify-center h-[64px] border-b border-['#E0Es0E0']">
+    <nav class="flex items-center justify-between w-[1440px] px-10">
+        <div class="flex">
+            <a href="#" class="mr-10 font-bold text-2xl tracking-tight"> Lista </a>
+            <ul class="flex items-center gap-5 text-base">
+                <% routes.map((route) => { %>
+					<li>
+					    <a href="<%= route.path %>"
+						    class="<%= route.name === current_route ? 'nav-list_active' : 'nav-list' %>"
+							><%= route.label %></a>
+					</li>
+				<% }); %>
+            </ul>
+        </div>
+        <div class="flex items-center justify-center gap-2">
+            
+            <% if(is_button === 'true') { %>
+                <div class="mr-10">
+                    <a
+                        href="<%= link_to %>"
+                        class="btn-add-credit block py-1.5 px-3 rounded-md bg-neutral-950 text-neutral-100 font-medium hover:bg-neutral-800 cursor-pointer"
+                        ><%= link_label %></a
+                    >
+                </div>
+            <% } %>
+
+            <button type="button" class="inline-block h-9 w-9 rounded-full bg-gray-400"></button>
+        </div>
+    </nav>
+</header>
