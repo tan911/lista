@@ -1,0 +1,8 @@
+<div class="<%= container_class %>">
+    <label for="<%= select_id %>" class="<%= label_class %>"><%= select_name %></label>
+    <select id="<%= select_id %>" class="<%= select_class %>" name="<%= select_id %>">
+				<% options.map((opt) => { %>
+					<option value="<%= opt.value %>"><%= opt.name %></option>
+				<% }) %>
+    </select>
+</div>

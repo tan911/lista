@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+    <%- include(render_partials+'head_html'); -%>
+    <body class="m-h-screen antialised">
+        <%- include(render_partials+'header_html', {link_to: '#', link_label: 'not_a_label', is_button: 'false'}); -%>
+        <main class="px-10 w-[1440px] mx-auto">
+            <div class="my-10 flex items-center gap-5">
+                <button 
+                    class="px-1.5 py-1 border border-['#E0E0E0'] rounded-md text-sm transition ease-in-out hover:bg-gray-100 ring-focus"
+                    onClick="window.history.back()"
+                >
+                    Back
+                </button>
+                <h1 class="text-md font-medium">Customer Profile</h1>
+            </div>
+
+            <div class="flex flex-col items-center justify-center gap-10 border-b border-['#E0E0E0']">
+                <div class="flex items-center gap-40 pb-5 self-start">
+                    <div class="flex items-center gap-5">
+                        <div class="flex items-center justify-center w-16 h-16 bg-gray-200 rounded-full">
+                            <span class="font-bold text-3xl opacity-75">JL</span>
+                        </div>
+                        <div class="">
+                            <h2 class="text-xl font-semibold"><%= profile.name %></h2>
+                            <p class="inline-block rounded-full">active</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-10">
+                        <div class="flex flex-col">
+                            <span class="text-sm text-gray-600">Contact</span>
+                            <span class="font-medium text-md"><%= profile.contactInfo %></span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-sm text-gray-600">Email Address</span>
+                            <span class="font-medium text-md">jolanutan@gmail.com</span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-sm text-gray-600">Credit Balance</span>
+                            <span class="font-medium text-md"><%= profile.creditBalance %></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="self-start">
+                    <ul class="flex">
+                        <li class="pb-5"><a href="#" class="p-1.5 inline-block">Introduction</a></li>
+                        <li class="pb-5"><a href="#" class="p-1.5 inline-block">Transaction History</a></li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>

@@ -6,9 +6,13 @@ import path from 'path'
 import { createLogger } from '../lib/logger'
 import { transactionRouter, viewRouter } from './routes'
 import { errorHandler, errorNotFoundHandler } from './middlewares/error_middleware'
+import appLocals from './utils/app_local_util'
 
 const app = express()
 const logger = createLogger('verbose')
+
+// Ejs path views
+app.locals = appLocals
 
 // Templating engine
 app.set('view engine', 'ejs')

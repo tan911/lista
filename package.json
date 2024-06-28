@@ -6,7 +6,7 @@
     "scripts": {
         "build": "pnpm build:ts && pnpm build:css",
         "start": "node dist/src/server.js",
-        "dev": "conc \"nodemon src/server.ts public/js/index.ts\" \"cp -r public/assets/ dist/public/assets/\" \"pnpm build:css -w\" \"pnpm build:ts --watch\"",
+        "dev": "conc \"nodemon src/server.ts public/js/index.ts\" \"rm -rf dist && cp -r public/assets/ dist\" \"pnpm build:css -w\" \"pnpm build:ts --watch\"",
         "clean": "rm -rf node_modules && rm -rf dist",
         "lint": "tsc --noEmit && eslint src/**/*.ts --fix",
         "format": "prettier . --write",
