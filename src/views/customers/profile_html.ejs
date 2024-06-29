@@ -7,7 +7,7 @@
             <div class="my-10 flex items-center gap-5">
                 <button 
                     class="px-1.5 py-1 border border-['#E0E0E0'] rounded-md text-sm transition ease-in-out hover:bg-gray-100 ring-focus"
-                    onClick="window.history.back()"
+                    onClick="window.location.href='/dashboard/customers'"
                 >
                     Back
                 </button>
@@ -32,7 +32,7 @@
                         </div>
                         <div class="flex flex-col">
                             <span class="text-sm text-gray-600">Email Address</span>
-                            <span class="font-medium text-md">jolanutan@gmail.com</span>
+                            <span class="font-medium text-md">N/A</span>
                         </div>
                         <div class="flex flex-col">
                             <span class="text-sm text-gray-600">Credit Balance</span>
@@ -41,12 +41,25 @@
                     </div>
                 </div>
                 <div class="self-start">
-                    <ul class="flex">
-                        <li class="pb-5"><a href="#" class="p-1.5 inline-block">Introduction</a></li>
-                        <li class="pb-5"><a href="#" class="p-1.5 inline-block">Transaction History</a></li>
+                    <ul class="flex gap-5">
+                        <li class="pb-5 <%= !tab_content ? 'font-semibold border-b border-gray-500' : '' %>">
+                            <a href="/dashboard/customers<%= url_tab %>" class="p-1.5 inline-block">Introduction</a>
+                        </li>
+                        <li class="pb-5 <%= tab_content === 'transaction-history' ? 'font-semibold border-b border-gray-500' : '' %>">
+                            <a href="/dashboard/customers<%= url_tab %>?tab=transaction-history" class="p-1.5 inline-block">Transaction History</a>
+                        </li>
                     </ul>
                 </div>
             </div>
-        </main>
+
+
+            <% if(!tab_content) { %>
+                <%- include('./introduction_html') -%>
+            <% } %>
+
+            <% if(tab_content === 'transaction-history') { %>
+                <%- include('./history_html', { transactions }) -%>
+            <% } %>
+         </main>
     </body>
 </html>
