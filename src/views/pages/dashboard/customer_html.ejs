@@ -2,7 +2,7 @@
 
 <main class="px-10 w-[1440px] mx-auto">
     <div class="flex justify-between items-center my-10">
-        <%- include(render_customers+'search_html'); -%>
+        <%- include(render_customers+'search_html', { search_label: 'search for customer', search_placholder: 'Search customer...'}); -%>
         <div class="text-sm flex items-center gap-2">
             <div>
                 <button
