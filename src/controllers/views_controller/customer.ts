@@ -1,6 +1,6 @@
 import type { Request, Response } from 'express'
 
-import { customer } from '../../services'
+import { customer, transaction } from '../../services'
 
 const routes = [
     { name: 'overview', path: '/dashboard', label: 'Overview' },
@@ -11,7 +11,7 @@ const routes = [
 export async function getCustomerView(req: Request, res: Response) {
     const customers = await customer.get()
 
-    return res.status(200).render('pages/dashboard/customer_html', {
+    return res.render('pages/dashboard/customer_html', {
         styles: '../public/css/output.css',
         javascript: '../public/js/index.js',
         routes,
@@ -30,7 +30,7 @@ export async function getCustomerModal(req: Request, res: Response) {
         return res.redirect('/dashboard/customers')
     }
 
-    return res.status(200).render('pages/dashboard/customer_html', {
+    return res.render('pages/dashboard/customer_html', {
         styles: '../../public/css/output.css',
         javascript: '../../public/js/index.js',
         routes,
@@ -43,15 +43,21 @@ export async function getCustomerModal(req: Request, res: Response) {
 
 export async function getCustomerById(req: Request, res: Response) {
     //TODO: validation for id before making in database
-
     const customerProfile = await customer.getById(req.params.id)
+    const transactionHistory = await transaction.getByCustomerId(req.params.id)
 
-    return res.status(200).render('customers/profile_html', {
+    // query
+    const tab = req.query.tab === 'transaction-history' ? req.query.tab : undefined
+
+    return res.render('customers/profile_html', {
         styles: '../../public/css/output.css',
         javascript: '../../public/js/index.js',
         routes,
         current_route: 'customers',
         showModal: false,
         profile: customerProfile,
+        tab_content: tab,
+        url_tab: req.path,
+        transactions: transactionHistory,
     })
 }
