@@ -40,4 +40,12 @@ export class TransactionService {
             totalRevenue: cashRevenue + creditRevenue,
         }
     }
+
+    public async getByCustomerId(id: string) {
+        return await this.prisma.transaction.findMany({
+            where: {
+                customerId: id,
+            },
+        })
+    }
 }
