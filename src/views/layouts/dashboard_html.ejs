@@ -3,10 +3,9 @@
     <%- include(render_partials+'head_html') -%>
     <body class="m-h-screen antialised">
         <% const ref_path = url+'/add-credit?show=true' %>
-        <%- include(render_partials+'header_html', { link_to: ref_path, link_label: 'Add credit', is_button: 'true' }) -%>
 
-        <% if (showModal) { %>
-            <%- include('../dialog/add_credit_html'); -%>
-        <% }; %>
+        <%- include(render_partials+'header_html', { link_to: ref_path, link_label: 'Add credit', is_button: 'true' }); -%>
+
+        <%- include(render_dialogs+'add_credit_html'); -%>
     </body>
 </html>

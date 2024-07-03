@@ -18,6 +18,6 @@
         "target": "ESNext",
         "lib": ["dom"]
     },
-    "include": ["src/**/*.ts", "lib/**/*.ts", "public/js/*.ts"],
+    "include": ["src/**/*.ts", "lib/**/*.ts"],
     "exclude": ["node_modules", "dist"]
 }

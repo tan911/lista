@@ -7,4 +7,5 @@ export default {
     render_customers: process.cwd() + '/src/views/customers/',
     render_overview: process.cwd() + '/src/views/overview/',
     render_transactions: process.cwd() + '/src/views/transactions/',
+    render_dialogs: process.cwd() + '/src/views/dialog/',
 }

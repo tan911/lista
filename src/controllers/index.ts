@@ -24,7 +24,11 @@ class EndpointFactory<TContext> {
         return async (req: Request, res: Response, next: NextFunction) => {
             try {
                 //validation for input
-                validatedInput = args.input?.parse({ ...req.params, ...req.query, ...req.body })
+                validatedInput = args.input?.parse({
+                    ...req.params,
+                    ...req.query,
+                    ...req.body,
+                })
             } catch (error) {
                 if (error) return res.status(400).json(error)
                 next(error)

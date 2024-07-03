@@ -10,6 +10,10 @@ body {
     font-variation-settings: 'slnt' 0;
 }
 
+dialog {
+    max-width: 100vw;
+}
+
 @keyframes blow-up {
     0% {
         transform: scale(0.5);
@@ -20,7 +24,7 @@ body {
 }
 
 @layer utilities {
-    .ac-modal-overlay {
+    .add-credit-modal-overlay {
         @apply bg-stone-950/[0.8] overflow-y-auto overflow-x-hidden fixed top-0 left-0 w-full h-full md:inset-0 z-10;
     }
 

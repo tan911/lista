@@ -5,14 +5,16 @@
     "main": "dist/src/server.js",
     "scripts": {
         "test": "jest",
-        "build": "pnpm build:ts && pnpm build:css",
+        "build": "pnpm build:ts && pnpm build:css && pnpm copy:views",
         "start": "node dist/src/server.js",
-        "dev": "conc \"nodemon src/server.ts public/js/index.ts\" \"rm -rf dist && cp -r public/assets/ dist\" \"pnpm build:css -w\" \"pnpm build:ts --watch\"",
+        "dev": "conc \"nodemon src/server.ts src/public/javascripts/index.ts\" \"pnpm copy:assets\" \"pnpm build:css -w\" \"pnpm build:ts --watch\"",
         "clean": "rm -rf node_modules && rm -rf dist",
         "lint": "tsc --noEmit && eslint src/**/*.ts --fix",
         "format": "prettier . --write",
-        "build:ts": "tsup",
-        "build:css": "tailwindcss -i public/css/input.css -o dist/public/css/output.css",
+        "build:ts": "tsup --tsconfig tsconfig.json",
+        "build:css": "tailwindcss -i src/public/stylesheets/input.css -o dist/src/public/stylesheets/output.css",
+        "copy:assets": "rm -rf dist/src/public/assets && cp -r src/public/assets/ dist/src/public/assets/",
+        "copy:views": "cp -r src/views dist/src/views/",
         "db:generate": "prisma generate",
         "db:seed": "prisma db seed",
         "db:push": "prisma db push",
@@ -68,10 +70,10 @@
     "tsup": {
         "entry": [
             "src/server.ts",
-            "public/js/index.ts"
+            "src/public/javascripts/index.ts"
         ],
         "splitting": false,
-        "outDir": "dist",
+        "outDir": "dist/src",
         "bundle": true,
         "minify": true,
         "sourcemap": true

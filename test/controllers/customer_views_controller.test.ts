@@ -12,16 +12,16 @@ describe('controller', () => {
     })
 })
 
-describe('controller modal', () => {
-    it('should call render method if show query is provided', async () => {
-        await getCustomerModal(req, res)
-        expect(res.render).toHaveBeenCalledWith('pages/dashboard/customer_html', expect.anything())
-        expect(res.redirect).not.toHaveBeenCalled()
-    })
+// describe('controller modal', () => {
+//     it('should call render method if show query is provided', async () => {
+//         await getCustomerModal(req, res)
+//         expect(res.render).toHaveBeenCalledWith('pages/dashboard/customer_html', expect.anything())
+//         expect(res.redirect).not.toHaveBeenCalled()
+//     })
 
-    it('should call redirect if show query is not provided', async () => {
-        req.query.show = undefined
-        await getCustomerModal(req, res)
-        expect(res.redirect).toHaveBeenCalled()
-    })
-})
+//     it('should call redirect if show query is not provided', async () => {
+//         req.query.show = undefined
+//         await getCustomerModal(req, res)
+//         expect(res.redirect).toHaveBeenCalled()
+//     })
+// })

@@ -1,74 +1,72 @@
-<div
-    aria-modal="true"
-    role="dialog"
-    class="overflow-y-auto overflow-x-hidden absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-50"
+<dialog
+    id="add-credit-modal"
+    aria-labelledby="add-credit-title"
+    aria-describedby="add-credit-desc"
+    class="fixed top-0 right-0 left-0 z-50 m-0 w-full md:inset-0 h-full max-h-full max-w-screen bg-black/40"
 >
-    <div
-        class="w-full m-w-[800px] bg-white rounded-lg shadow p-10 drop-shadow-lg md:w-[800px] animate-modal"
-    >
-        <div class="flex items-center justify-between pb-5 border-b border-['#E0Es0E0']">
-            <div>
-                <h3 class="font-bold text-2xl">Create Credit</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit!</p>
+    <div class="relative w-max-content h-max-content animate-modal">
+        <div class="relative flex flex-col p-6 bg-white rounded-xl shadow-xs">
+            <div class="flex items-center justify-between pb-5 border-b border-['#E0Es0E0']">
+                <div>
+                    <h3 id="add-credit-title" class="font-semibold text-2xl">Create Credit</h3>
+                    <p id="add-credit-desc">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit!
+                    </p>
+                </div>
+                <button
+                    id="btn-add-credit-modal-close"
+                    aria-label="close"
+                    class="ac-modal-btn-close"
+                    value="close"
+                >
+                    Close
+                </button>
             </div>
-            <a href="<%= url %>" id="ac-modal-close" aria-label="close" class="ac-modal-btn-close"
-                >Close</a
-            >
-        </div>
-        <div class="w-full py-5">
-            <form action="" class="grid grid-cols-2 gap-10">
-                <%- include('./input_html', {
-                    container_class: 'py-2',
-                    label_class: 'block mb-2',
-                    input_id: 'creditors',
-                    input_label: 'Name of Creditors',
-                    input_type: 'text',
-                    input_placeholder: 'Ex. Juan Dela Cruz',
-                    input_class: 'ac-modal-input',
-                }); -%>
-
-                <%- include('./input_html', {
-                    container_class: 'py-2',
-                    label_class: 'block mb-2',
-                    input_id: 'products',
-                    input_label: 'Name of Products',
-                    input_type: 'text',
-                    input_placeholder: 'Ex. Lemonade',
-                    input_class: 'ac-modal-input',
-                }); -%>
-                
-                <div class="flex gap-4 py-2">
-                    <%- include('./input_html', {
-                        container_class: 'py-2',
-                        label_class: 'block mb-2',
-                        input_id: 'quantity',
-                        input_label: 'Name of Products',
-                        input_type: 'number',
-                        input_placeholder: 'Qty',
-                        input_class: 'ac-modal-input',
-                    }); -%>
-
-                    <%- include('./input_html', {
-                        container_class: 'py-2',
-                        label_class: 'block mb-2',
-                        input_id: 'date',
-                        input_label: 'Name of Products',
-                        input_type: 'date',
-                        input_placeholder: 'date',
-                        input_class: 'ac-modal-input',
-                    }); -%>
+            <form action="" method="dialog" class="w-full py-5 grid grid-cols-2 gap-4">
+                <div class="py-2">
+                    <label for="creditors" class="block mb-2">Name of creditors</label>
+                    <input id="creditors" type="text" placeholder="name" class="ac-modal-input" />
+                </div>
+                <div class="py-2">
+                    <label for="products" class="block mb-2">Name of products</label>
+                    <input
+                        id="products"
+                        type="text"
+                        placeholder="products"
+                        class="ac-modal-input"
+                    />
+                </div>
+                <div class="py-2">
+                    <label for="email" class="block mb-2">Email</label>
+                    <input id="email" type="email" placeholder="email" class="ac-modal-input" />
+                </div>
+                <div class="py-2">
+                    <label for="category" class="block mb-2 text-md">Category</label>
+                    <select
+                        name="category"
+                        id="category"
+                        class="ring-focus border border-[#E0Es0E0] w-full px-2 py-1.5 rounded-md"
+                    >
+                        <option value="credit">Credit</option>
+                        <option value="cash">Cash</option>
+                    </select>
                 </div>
 
-                <%- include('./select_html', {
-                    container_class: 'py-2',
-                    label_class: 'block mb-2 text-md',
-                    select_name: 'Transaction Category',
-                    select_id: 'transaction',
-                    select_class: 'ring-focus border border-[#E0Es0E0] w-full px-2 py-1.5 rounded-md',
-                    options: [{ value: 'credit', name: 'Credit' }, { value: 'cash', name: 'Cash'}]
-
-                }); -%>
-                
+                <div class="flex gap-4 py-2">
+                    <div class="py-2">
+                        <label for="quantity" class="block mb-2">Quantity</label>
+                        <input
+                            id="quantity"
+                            type="number"
+                            placeholder="Qty"
+                            class="ac-modal-input"
+                        />
+                    </div>
+                    <div class="py-2">
+                        <label for="date" class="block mb-2">Date</label>
+                        <input id="date" type="date" placeholder="date" class="ac-modal-input" />
+                    </div>
+                </div>
                 <button
                     type="submit"
                     class="ring-focus bg-stone-900 hover:bg-stone-800 text-white py-2 px-16 rounded-md mt-20 col-span-2 place-self-end"
@@ -78,6 +76,4 @@
             </form>
         </div>
     </div>
-</div>
-
-<div class="ac-modal-overlay"></div>
+</dialog>
