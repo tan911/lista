@@ -14,6 +14,10 @@ dialog {
     max-width: 100vw;
 }
 
+.ac-input-error {
+    @apply outline outline-offset-2 outline-2 outline-red-500;
+}
+
 @keyframes blow-up {
     0% {
         transform: scale(0.5);
@@ -29,7 +33,11 @@ dialog {
     }
 
     .ac-modal-btn-close {
-        @apply ring-focus self-start rounded-md border border-['#E0Es0E0'] p-1.5 text-stone-700 text-sm font-medium drop-shadow-sm transition-all ease-in-out duration-300;
+        @apply ring-focus self-start rounded-md p-1.5 text-stone-700 transition-all ease-in-out duration-300;
+    }
+
+    .ac-key-esc {
+        @apply p-1.5 bg-gray-100 rounded-md ml-1 font-light tracking-wide shadow-key;
     }
 
     .ac-modal-input {

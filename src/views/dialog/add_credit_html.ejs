@@ -8,9 +8,9 @@
         <div class="relative flex flex-col p-6 bg-white rounded-xl shadow-xs">
             <div class="flex items-center justify-between pb-5 border-b border-['#E0Es0E0']">
                 <div>
-                    <h3 id="add-credit-title" class="font-semibold text-2xl">Create Credit</h3>
-                    <p id="add-credit-desc">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit!
+                    <h3 id="add-credit-title" class="font-bold text-3xl">Create Credit</h3>
+                    <p id="add-credit-desc" class="text-md tracking-tight leading-normal">
+                        Easily add a new credit entry!
                     </p>
                 </div>
                 <button
@@ -19,60 +19,133 @@
                     class="ac-modal-btn-close"
                     value="close"
                 >
-                    Close
+                    <span class="font-light text-md">Close</span>
+                    <span class="ac-key-esc text-sm">ESC</span>
                 </button>
             </div>
-            <form action="" method="dialog" class="w-full py-5 grid grid-cols-2 gap-4">
-                <div class="py-2">
-                    <label for="creditors" class="block mb-2">Name of creditors</label>
-                    <input id="creditors" type="text" placeholder="name" class="ac-modal-input" />
+            <form
+                id="add-credit-form"
+                method="dialog"
+                class="w-full py-5 grid grid-cols-2 gap-x-6 gap-y-3"
+            >
+                <div data-container class="py-2 relative">
+                    <label for="creditors" class="block mb-1 text-sm">Name of creditors</label>
+                    <input
+                        id="creditors"
+                        type="text"
+                        name="creditors"
+                        placeholder="Enter creditor's name"
+                        class="transition-outline ease-in duration-300 ac-modal-input"
+                        aria-describedby="creditors-error-message"
+                    />
+                    <span
+                        id="creditors-error-message"
+                        aria-live="polite"
+                        class="hidden absolute left-0 bottom-[-13px] text-xs text-red-500 font-bold tracking-normal"
+                    ></span>
                 </div>
-                <div class="py-2">
-                    <label for="products" class="block mb-2">Name of products</label>
+                <div data-container class="py-2 relative">
+                    <label for="products" class="block mb-1 text-sm">Name of products</label>
                     <input
                         id="products"
                         type="text"
-                        placeholder="products"
-                        class="ac-modal-input"
+                        name="products"
+                        placeholder="Enter product name"
+                        class="transition-outline ease-in duration-300 ac-modal-input"
+                        aria-describedby="products-error-message"
                     />
+                    <span
+                        id="products-error-message"
+                        aria-live="polite"
+                        class="hidden absolute left-0 bottom-[-13px] text-xs text-red-500 font-bold tracking-normal"
+                    ></span>
                 </div>
-                <div class="py-2">
-                    <label for="email" class="block mb-2">Email</label>
-                    <input id="email" type="email" placeholder="email" class="ac-modal-input" />
+                <div data-container class="py-2 relative">
+                    <label for="email" class="block mb-1 text-sm">Email</label>
+                    <input
+                        id="email"
+                        type="email"
+                        placeholder="Enter email address"
+                        name="email"
+                        class="transition-outline ease-in duration-300 ac-modal-input"
+                        aria-describedby="email-error-message"
+                    />
+                    <span
+                        id="email-error-message"
+                        aria-live="polite"
+                        class="hidden absolute left-0 bottom-[-13px] text-xs text-red-500 font-bold tracking-normal"
+                    ></span>
                 </div>
-                <div class="py-2">
-                    <label for="category" class="block mb-2 text-md">Category</label>
+                <div data-container class="py-2 relative">
+                    <label for="category" class="block mb-1 text-sm">Category</label>
                     <select
                         name="category"
                         id="category"
-                        class="ring-focus border border-[#E0Es0E0] w-full px-2 py-1.5 rounded-md"
+                        name="category"
+                        class="transition-outline ease-in duration-300 ring-focus border border-['#E0Es0E0'] w-full px-2 py-1.5 rounded-md"
+                        aria-describedby="category-error-message"
                     >
                         <option value="credit">Credit</option>
                         <option value="cash">Cash</option>
                     </select>
+                    <span
+                        id="category-error-message"
+                        aria-live="polite"
+                        class="hidden absolute left-0 bottom-[-13px] text-xs text-red-500 font-bold tracking-normal"
+                    ></span>
                 </div>
 
                 <div class="flex gap-4 py-2">
-                    <div class="py-2">
-                        <label for="quantity" class="block mb-2">Quantity</label>
+                    <div data-container class="py-2 relative">
+                        <label for="quantity" class="block mb-1 text-sm">Quantity</label>
                         <input
                             id="quantity"
-                            type="number"
-                            placeholder="Qty"
-                            class="ac-modal-input"
+                            type="text"
+                            name="quantity"
+                            placeholder="Enter quantity"
+                            class="transition-outline ease-in duration-300 ac-modal-input"
                         />
+                        <span
+                            id="quantity-error-message"
+                            aria-live="polite"
+                            class="hidden absolute left-0 bottom-[-13px] text-xs text-red-500 font-bold tracking-normal"
+                        ></span>
                     </div>
-                    <div class="py-2">
-                        <label for="date" class="block mb-2">Date</label>
-                        <input id="date" type="date" placeholder="date" class="ac-modal-input" />
+                    <div data-container class="py-2 relative">
+                        <label for="date" class="block mb-1 text-sm">Date</label>
+                        <input
+                            id="date"
+                            type="date"
+                            placeholder="date"
+                            name="date"
+                            class="transition-outline ease-in duration-300 ac-modal-input"
+                        />
+                        <span
+                            id="date-error-message"
+                            aria-live="polite"
+                            class="hidden absolute left-0 bottom-[-13px] text-xs text-red-500 font-bold tracking-normal"
+                        ></span>
                     </div>
                 </div>
-                <button
-                    type="submit"
-                    class="ring-focus bg-stone-900 hover:bg-stone-800 text-white py-2 px-16 rounded-md mt-20 col-span-2 place-self-end"
-                >
-                    Add
-                </button>
+                <div class="mt-20 col-span-2 place-self-end">
+                    <button
+                        type="button"
+                        id="btn-add-credit-modal-cancel"
+                        aria-label="cancel"
+                        value="cancel"
+                        class="font-medium text-white py-2 px-16 rounded-md border border-['#E0Es0E0'] mr-4 bg-red-900 hover:bg-red-800 focus:ring focus:ring-offset-2 focus:ring-2 focus:ring-red-900 focus:outline-none"
+                    >
+                        Cancel
+                    </button>
+                    <button
+                        type="submit"
+                        aria-label="add"
+                        value="add"
+                        class="ring-focus bg-stone-900 hover:bg-stone-800 text-white py-2 px-16 rounded-md"
+                    >
+                        Add
+                    </button>
+                </div>
             </form>
         </div>
     </div>

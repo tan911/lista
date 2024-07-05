@@ -13,7 +13,7 @@
         "format": "prettier . --write",
         "build:ts": "tsup --tsconfig tsconfig.json",
         "build:css": "tailwindcss -i src/public/stylesheets/input.css -o dist/src/public/stylesheets/output.css",
-        "copy:assets": "rm -rf dist/src/public/assets && cp -r src/public/assets/ dist/src/public/assets/",
+        "copy:assets": "rm -rf dist/src/public/assets && cp -r src/public/assets dist/src/public/assets",
         "copy:views": "cp -r src/views dist/src/views/",
         "db:generate": "prisma generate",
         "db:seed": "prisma db seed",
@@ -27,6 +27,7 @@
     "dependencies": {
         "@auth/express": "^0.5.5",
         "@prisma/client": "^5.15.0",
+        "axios": "^1.7.2",
         "cors": "^2.8.5",
         "d3": "^7.9.0",
         "dotenv": "^16.4.5",
@@ -68,15 +69,20 @@
         "schema": "db/prisma/schema.prisma"
     },
     "tsup": {
-        "entry": [
-            "src/server.ts",
-            "src/public/javascripts/index.ts"
-        ],
+        "entry": {
+            "server": "src/server.ts",
+            "public/javascripts/bundle": "src/public/javascripts/index.ts"
+        },
         "splitting": false,
         "outDir": "dist/src",
         "bundle": true,
         "minify": true,
-        "sourcemap": true
+        "sourcemap": true,
+        "treeshake": true,
+        "format": [
+            "cjs",
+            "iife"
+        ]
     },
     "lint-staged": {
         "(src|lib)**/*.{ts,js}": [

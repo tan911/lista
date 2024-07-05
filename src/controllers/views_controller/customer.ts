@@ -19,7 +19,6 @@ export async function getCustomerView(req: Request, res: Response) {
         routes,
         current_route: 'customers',
         url: req.originalUrl,
-        showModal: false,
         customers: customers.customer,
     })
 }
@@ -36,7 +35,6 @@ export async function getCustomerModal(req: Request, res: Response) {
         routes,
         current_route: 'customers',
         url: '/dashboard/customers',
-        showModal: true,
         customers: customers.customer,
     })
 }
@@ -52,7 +50,6 @@ export async function getCustomerById(req: Request, res: Response) {
     return res.render('customers/profile_html', {
         routes,
         current_route: 'customers',
-        showModal: false,
         profile: customerProfile,
         tab_content: tab,
         url_tab: req.path,

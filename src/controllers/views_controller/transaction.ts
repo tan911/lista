@@ -15,7 +15,6 @@ export async function getTransactionView(req: Request, res: Response) {
         routes,
         current_route: 'transactions',
         url: req.originalUrl,
-        showModal: false,
     })
 }
 
@@ -29,6 +28,5 @@ export async function getTransactionModal(req: Request, res: Response) {
         routes,
         current_route: 'transactions',
         url: '/dashboard/transactions',
-        showModal: true,
     })
 }

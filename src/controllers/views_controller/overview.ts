@@ -19,7 +19,6 @@ export async function getOverview(req: Request, res: Response) {
         routes,
         current_route: 'overview',
         url: req.originalUrl,
-        showModal: false,
         revenue,
         count: customers.customerCount,
     })
@@ -37,7 +36,6 @@ export async function getOverviewModal(req: Request, res: Response) {
         url: '/dashboard',
         routes,
         current_route: 'overview',
-        showModal: true,
         revenue,
         count: customers.customerCount,
     })
