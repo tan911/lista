@@ -1,13 +1,13 @@
 <%- include(render_layouts+'/dashboard_html'); -%>
 
-<main class="px-10 w-[1440px] mx-auto">
+<main class="w-full px-5 max-w-[1440px] md:mx-auto md:px-10">
     <%- include(render_overview+'segmented_control_html') -%>
     <!-- metrics -->
     <%- include(render_overview+'card_metrics_html') -%>
-    <div class="mt-10 flex gap-10 justify-between">
+    <div class="flex flex-col gap-5 mt-10 md:flex-row md:justify-between md:gap-10">
         <div
             id="container"
-            class="h-[448px] w-[790px] rounded-xl border border-b-['#E0E0E0'] shadow-sm"
+            class="w-full h-[448px] max-w-[790px] rounded-xl border border-b-['#E0E0E0'] shadow-sm"
         ></div>
         <%- include(render_overview+'top_customer_html') -%>
     </div>

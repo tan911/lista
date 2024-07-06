@@ -32,7 +32,7 @@ export const inputSchema = z.object({
             required_error: 'Quantity is required',
             invalid_type_error: 'Please enter a number',
         })
-        .positive({ message: 'Number must be greater than zero' }),
+        .positive({ message: '> 0 required' }),
     date: z.string().date(),
 })
 

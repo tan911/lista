@@ -67,9 +67,6 @@ devDependencies:
   '@types/node':
     specifier: ^20.14.2
     version: 20.14.2
-  '@types/pug':
-    specifier: ^2.0.10
-    version: 2.0.10
   concurrently:
     specifier: ^8.2.2
     version: 8.2.2
@@ -1621,10 +1618,6 @@ packages:
     resolution: {integrity: sha512-xyu6WAMVwv6AKFLB+e/7ySZVr/0zLCzOa7rSpq6jNwpqOrUbcACDWC+53d4n2QHOnDou0fbIsg8wZu/sxrnI4Q==}
     dependencies:
       undici-types: 5.26.5
-    dev: true
-
-  /@types/pug@2.0.10:
-    resolution: {integrity: sha512-Sk/uYFOBAB7mb74XcpizmH0KOR2Pv3D2Hmrh1Dmy5BmK3MpdSa5kqZcg6EKBdklU0bFXX9gCfzvpnyUehrPIuA==}
     dev: true
 
   /@types/qs@6.9.15:

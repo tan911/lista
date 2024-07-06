@@ -1,6 +1,6 @@
 import { z } from 'zod'
-import { getInputData } from './inputs/add-credit'
-import { inputSchema, inputFieldSchema, InputSchema } from '../../../lib/schema'
+import { getInputData } from '../inputs/add-credit'
+import { inputSchema, inputFieldSchema, InputSchema } from '../../../../lib/schema'
 
 export abstract class Dialog {
     public abstract open(): void
@@ -69,7 +69,14 @@ export class AddCredit extends Dialog {
 
         this.dialogEl.classList.remove('flex', 'items-center', 'justify-center')
         this.dialogEl.close()
-        window.history.go(-1)
+
+        const paths = document.location.pathname.split('/')
+        const hasMainPath =
+            paths[paths.length - 2] === 'dashboard'
+                ? 'dashboard'
+                : `dashboard/${paths[paths.length - 2]}`
+
+        window.history.replaceState({}, '', `${document.location.origin}/${hasMainPath}`)
     }
 
     public closeByKey(event: KeyboardEvent) {

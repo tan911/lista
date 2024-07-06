@@ -1,30 +1,45 @@
-<header class="flex items-center justify-center h-[64px] border-b border-['#E0Es0E0']">
-    <nav class="flex items-center justify-between w-[1440px] px-10">
-        <div class="flex">
-            <a href="#" class="mr-10 font-bold text-2xl tracking-tight"> Lista </a>
-            <ul class="flex items-center gap-5 text-base">
-                <% routes.map((route) => { %>
-					<li>
-					    <a href="<%= route.path %>"
-						    class="<%= route.name === current_route ? 'nav-list_active' : 'nav-list' %>"
-							><%= route.label %></a>
-					</li>
-				<% }); %>
+<header class="flex h-[64px] border-b border-['#E0Es0E0'] md:items-center md:justify-center">
+    <nav class="relative w-full max-w-[1440px] px-5 flex items-center justify-between md:px-10">
+        <div class="w-[50%] md:flex md:items-center md:justify-between md:w-0">
+            <a href="#" class="font-bold text-2xl tracking-tight md:mr-10"> Lista </a>
+            <ul data-visible="false" id="nav-list-cta" class="absolute inset-y-0 left-[-1000px] h-screen z-[999] w-[70%] bg-white border border-r border-['#E0Es0E0'] pt-32 px-4 shadow-left-xl text-base transition-left duration-500 ease-in-out sm:w-[30%] md:h-0 md:static md:z-0 md:flex md:items-center md:gap-5 md:shadow-none md:w-full md:border-none md:p-0">
+                <div class="absolute bottom-10 left-4 right-4 mx-auto">
+                    <button aria-label="logout-button" type="button" class="btn-logout w-full max-w-content ring-focus bg-stone-800 text-white py-1.5 rounded-md flex items-center justify-center gap-2 md:hidden">
+                        <span class="ml-4">Logout</span>
+                    </button>
+                </div>    
+                <button id="btn-nav-close" aria-label="close-menu-button" class="absolute right-4 top-10 font-light p-1 border border-r border-['#E0Es0E0'] rounded-md ring-focus md:hidden">close</button>
+                    <% routes.map((route) => { %>
+                        <li class="flex items-center gap-3 mb-5 md:m-0">
+                            <div class="md:hidden">
+                                <img src="/src/public/assets/icon/<%=route.label.toLowerCase() %>.svg" aria-hidden="true" alt="<%= route.name %>">
+                            </div>
+                            <a href="<%= route.path %>"
+                                class="<%= route.name === current_route ? 'nav-list_active' : 'nav-list' %>"
+                            ><%= route.label %></a>
+                        </li>
+                    <% }); %>
             </ul>
         </div>
-        <div class="flex items-center justify-center gap-2">
+        <div class="w-auto flex items-center gap-2 md:ml-auto md:justify-center md:ml-auto">
             
             <% if(is_button === 'true') { %>
-                <div class="mr-10">
+                <div class="md:mr-10">
                     <button
                         id="btn-add-credit-modal-open"
-                        class="btn-add-credit block py-1.5 px-3 rounded-md bg-neutral-950 text-neutral-100 font-medium hover:bg-neutral-800 cursor-pointer"
-                        ><%= link_label %></
-                    >
+                        class="btn-add-credit text-sm block py-2 px-3 rounded-md bg-neutral-950 text-neutral-100 font-medium cursor-pointer md:text-base md:py-1.5 hover:bg-neutral-800"
+                        ><%= link_label %></button>
                 </div>
             <% } %>
 
-            <button type="button" class="inline-block h-9 w-9 rounded-full bg-gray-400"></button>
+            <button type="button" class="hidden inline-block h-9 w-9 rounded-full bg-gray-400 md:flex"></button>
+            <button id="btn-nav-toggle" type="button" aria-expanded="false" aria-controls="nav-list-cta" class="ring-focus px-2 py-1 border border-['#E0Es0E0'] rounded-md md:hidden">
+                <span class="sr-only">Open menu button</span>
+                <svg class="w-5 h-5" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+                </svg>
+            </button>
+            
         </div>
     </nav>
 </header>

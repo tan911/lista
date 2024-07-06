@@ -3,6 +3,7 @@
     "version": "1.0.0",
     "description": "Credit Management Application",
     "main": "dist/src/server.js",
+    "private": "true",
     "scripts": {
         "test": "jest",
         "build": "pnpm build:ts && pnpm build:css && pnpm copy:views",
@@ -47,7 +48,6 @@
         "@types/jest": "^29.5.12",
         "@types/morgan": "^1.9.9",
         "@types/node": "^20.14.2",
-        "@types/pug": "^2.0.10",
         "concurrently": "^8.2.2",
         "eslint": "^9.5.0",
         "globals": "^15.6.0",
