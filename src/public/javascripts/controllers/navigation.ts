@@ -15,7 +15,8 @@ export class NavigationBar {
             this.navEl.setAttribute('data-visible', 'false')
             this.navEl.classList.remove('left-0')
             this.navEl.classList.add('left-[-1000px]')
-            overlay.classList.add('hidden')
+            overlay.classList.remove('visible', 'opacity-100')
+            overlay.classList.add('opacity-0', 'invisible')
         }
     }
 
@@ -28,7 +29,8 @@ export class NavigationBar {
             this.navEl.setAttribute('data-visible', 'true')
             this.navEl.classList.remove('left-[-1000px]')
             this.navEl.classList.add('left-0')
-            overlay.classList.remove('hidden')
+            overlay.classList.remove('invisible', 'opacity-0')
+            overlay.classList.add('visible', 'opacity-100')
         }
     }
 

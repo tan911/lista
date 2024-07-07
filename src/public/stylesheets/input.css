@@ -25,6 +25,45 @@ dialog {
     background-position-x: 25%;
 }
 
+.btn-nav-bar,
+.btn-arrow-close {
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: auto;
+}
+
+.btn-arrow-close {
+    background-image: url('../assets/icon/less-than.svg');
+}
+
+.btn-nav-bar {
+    background-image: url('../assets/icon/menu.svg');
+}
+
+.lucide-menu {
+    width: 24px;
+    height: 24px;
+}
+
+.lucide-chevron-left,
+.lucide-panels-top-left,
+.lucide-arrow-left-right,
+.lucide-users {
+    color: #6b7280;
+}
+
+.lucide-chevron-left {
+    width: 20px;
+    height: 20px;
+}
+
+.lucide-panels-top-left,
+.lucide-users,
+.lucide-arrow-left-right {
+    width: 18px;
+    height: 18px;
+}
+
 @keyframes blow-up {
     0% {
         transform: scale(0.5);

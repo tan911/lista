@@ -8,17 +8,19 @@
                         <span class="ml-4">Logout</span>
                     </button>
                 </div>    
-                <button id="btn-nav-close" aria-label="close-menu-button" class="absolute right-4 top-10 font-light p-1 border border-r border-['#E0Es0E0'] rounded-md ring-focus md:hidden">close</button>
+                <button id="btn-nav-close" type="button" class="btn-arrow-close absolute right-4 top-10 font-light p-2 w-9 h-9 border border-r border-['#E0Es0E0'] rounded-md ring-focus md:hidden">
+                    <span id="btn-nav-close-name" class="sr-only">Close menu button</span>
+                </button>
                     <% routes.map((route) => { %>
                         <li class="flex items-center gap-3 mb-5 md:m-0">
-                            <div class="md:hidden">
-                                <img src="/src/public/assets/icon/<%=route.label.toLowerCase() %>.svg" aria-hidden="true" alt="<%= route.name %>">
+                            <div aria-hidden="true" class="bg-gray-100 p-1.5 rounded-md md:hidden">
+                                <%- route.icon %>
                             </div>
                             <a href="<%= route.path %>"
                                 class="<%= route.name === current_route ? 'nav-list_active' : 'nav-list' %>"
                             ><%= route.label %></a>
                         </li>
-                    <% }); %>
+                    <% }); %>        
             </ul>
         </div>
         <div class="w-auto flex items-center gap-2 md:ml-auto md:justify-center md:ml-auto">
@@ -33,11 +35,8 @@
             <% } %>
 
             <button type="button" class="hidden inline-block h-9 w-9 rounded-full bg-gray-400 md:flex"></button>
-            <button id="btn-nav-toggle" type="button" aria-expanded="false" aria-controls="nav-list-cta" class="ring-focus px-2 py-1 border border-['#E0Es0E0'] rounded-md md:hidden">
-                <span class="sr-only">Open menu button</span>
-                <svg class="w-5 h-5" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
-                </svg>
+            <button id="btn-nav-toggle" type="button" aria-expanded="false" aria-controls="nav-list-cta" class="btn-nav-bar ring-focus px-2 py-1 w-9 h-9 border border-['#E0Es0E0'] rounded-md md:hidden">
+                <span id="btn-nav-toggle-name" class="sr-only">Open menu button</span>
             </button>
             
         </div>

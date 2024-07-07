@@ -12,45 +12,53 @@ const navbarBtnOpen = document.getElementById('btn-nav-toggle') as HTMLElement
 const navbarBtnClose = document.getElementById('btn-nav-close') as HTMLElement
 const overlay = document.getElementById('overlay') as HTMLElement
 
-addCreditOpenBtn.addEventListener('click', () => {
-    addCreditDialog.open()
-})
+function dialogEvents(event: Event) {
+    const eventTarget = event.target as HTMLElement
+    if (eventTarget.id === 'btn-add-credit-modal-open') {
+        addCreditDialog.open()
+    } else if (
+        [
+            'add-credit-modal',
+            'btn-add-credit-modal-close',
+            'btn-add-credit-modal-key',
+            'btn-add-credit-modal-name',
+        ].includes(eventTarget.id)
+    ) {
+        addCreditDialog.close()
+    } else if (eventTarget.id === 'btn-add-credit-modal-cancel') {
+        addCreditDialog.cancel()
+    }
+}
 
-addCreditCloseBtn.addEventListener('click', () => {
-    addCreditDialog.close()
-})
-
-addCreditCancelBtn.addEventListener('click', () => {
-    addCreditDialog.cancel()
-})
-
-document.addEventListener('keydown', (e) => {
+function dialogKeyEvents(e: KeyboardEvent) {
     addCreditDialog.closeByKey(e)
     addCreditDialog.openByKey(e)
-})
+}
 
-addCreditForm.addEventListener('submit', (e) => {
+function handleFormSubmit(e: Event) {
     e.preventDefault()
     addCreditDialog.action()
-})
+}
 
-addCreditWindow.addEventListener('click', (e: MouseEvent) => {
-    if ((e.target as HTMLElement).id === 'add-credit-modal') {
-        addCreditDialog.close()
+function navbarEvents(event: Event) {
+    const eventTarget = event.target as HTMLElement
+    if (['btn-nav-toggle', 'btn-nav-toggle-name', 'btn-nav-toggle-img'].includes(eventTarget.id)) {
+        navbar.toggle()
+    } else if (['btn-nav-close', 'overlay', 'btn-nav-close-name'].includes(eventTarget.id)) {
+        navbar.collapse()
     }
-})
+}
 
-navbarBtnOpen.addEventListener('click', () => {
-    navbar.toggle()
-})
+addCreditOpenBtn.addEventListener('click', dialogEvents)
+addCreditCloseBtn.addEventListener('click', dialogEvents)
+addCreditCancelBtn.addEventListener('click', dialogEvents)
+addCreditWindow.addEventListener('click', dialogEvents)
+document.addEventListener('keydown', dialogKeyEvents)
+addCreditForm.addEventListener('submit', handleFormSubmit)
 
-navbarBtnClose.addEventListener('click', () => {
-    navbar.collapse()
-})
-
-overlay.addEventListener('click', () => {
-    navbar.collapse()
-})
+navbarBtnOpen.addEventListener('click', navbarEvents)
+navbarBtnClose.addEventListener('click', navbarEvents)
+overlay.addEventListener('click', navbarEvents)
 
 document.addEventListener('DOMContentLoaded', () => {
     console.log('--- page loaded ---')

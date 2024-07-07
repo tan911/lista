@@ -1,15 +1,6 @@
 import type { Request, Response } from 'express'
+import { routes } from '../../utils/route_util'
 import { transaction, customer } from '../../services'
-
-const routes = [
-    { name: 'overview', path: '/dashboard', label: 'Overview' },
-    { name: 'customers', path: '/dashboard/customers', label: 'Customers' },
-    {
-        name: 'transactions',
-        path: '/dashboard/transactions',
-        label: 'Transactions',
-    },
-]
 
 export async function getOverview(req: Request, res: Response) {
     const revenue = await transaction.getRevenue()
