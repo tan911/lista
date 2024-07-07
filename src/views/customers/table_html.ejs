@@ -1,23 +1,23 @@
-<table class="w-full text-sm">
+<table class="w-full table-auto min-w-full text-sm">
   <thead class="border-b border-['#E0Es0E']">
     <tr class="font-normal">
-      <th class="h-12 px-4 text-left align-middle text-gray-500">Customer</th>
-      <th class="h-12 px-4 text-left align-middle text-gray-500">Contact</th>
-      <th class="h-12 px-4 text-left align-middle text-gray-500">Credit Balance</th>                              
+      <th scope="col" class="h-12 pr-3 pl-1 text-left align-middle text-gray-500 whitespace-nowrap md:px-4">Customer</th>
+      <th scope="col" class="h-12 px-3 text-left align-middle text-gray-500 whitespace-nowrap md:px-3">Credit Balance</th>                              
+      <th scope="col" class="h-12 px-3 text-left align-middle text-gray-500 w-auto whitespace-nowrap md:px-4">Contact</th>
     </tr>
   </thead>
     <tbody>
 			<% customers.map((customer) => { %>
 				<tr onClick="window.location='/dashboard/customers/<%= customer.id %>'" class="border-b border-['#E0Es0E'] hover:bg-gray-100 cursor-pointer">
-					<td class="flex items-center gap-2 p-4 pl-3 align-middle">
-						<div class="flex items-center justify-center h-8 w-8 rounded-full bg-gray-200">JL</div>
+					<td class="flex items-center gap-2 px-6 py-4 pl-1 align-middle sm:p-4 sm:pl-3">
+						<div class="hidden h-8 w-8 rounded-full bg-gray-200 md:visible md:flex md:items-center md:justify-center">JL</div>
 						<div class="flex flex-col">
-							<span class="font-medium"><%= customer.name %></span>
-							<span class="text-sm text-gray-500"><%= customer.email %></span>
+							<span class="font-medium whitespace-nowrap"><%= customer.name %></span>
+							<span class="hidden text-sm text-gray-500 sm:block"><%= customer.email %></span>
 						</div>
 					</td>
-					<td class="p-4 align-middle"><%= customer.contactInfo %></td>
-					<td class="p-4 align-middle"><%= customer.creditBalance %></td>
+					<td class="align-middle px-6 py-4 whitespace-nowrap sm:w-auto sm:p-4p"><%= customer.creditBalance %></td>
+					<td class="align-middle w-auto px-6 py-3 whitespace-nowrap sm:p-4"><%= customer.contactInfo %></td>
 				</tr>
 			<% }); %>
 		</tbody>

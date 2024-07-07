@@ -1,11 +1,11 @@
 <div class="my-4 h-full border border-['#E0Es0E'] p-4 rounded-md">
-	<div class="mb-8 flex items-center justify-between">
-		<div>
-			<h2>Total</h2>
+	<div class="mb-8 flex flex-col items-center gap-4 md:justify-between md:flex-row">
+		<div class="self-start order-last sm:order-first">
+			<h2 class="inline-block">Total: </h2>
 			<strong>5999</strong>
 		</div>
 		<%- include('./search_html', { search_label: 'Search for transaction', search_placholder: 'Search transaction...'}) -%>
-		<div>
+		<div class="self-start">
       <button
         type="button"
         aria-label="Filter"
@@ -19,30 +19,29 @@
       </ul>
     </div>
 	</div>
-	<div class="h-[300px]">
-		<table class="w-full text-sm">
+	<div class="h-auto max-h-[300px] overflow-auto">
+		<table class="w-full table-fixed min-w-full text-sm md:table-auto">
 			<thead class="border-b border-['#E0Es0E']">
 				<tr class="font-normal">
-					<th class="h-12 px-4 text-left align-middle text-gray-500">Transaction Id</th>
-					<th class="h-12 px-4 text-left align-middle text-gray-500">Transaction Type</th>
-					<th class="h-12 px-4 text-left align-middle text-gray-500">Amount</th>
-					<th class="h-12 px-4 text-left align-middle text-gray-500">Date</th>                              
+					<th class="px-6 py-3 text-left align-middle text-gray-500 sm:h-12 sm:px-4">Type</th>
+					<th class="px-6 py-3 text-left align-middle text-gray-500 sm:h-12 sm:px-4">Amount</th>
+					<th class="px-6 py-3 text-left align-middle text-gray-500 sm:h-12 sm:px-4">Date</th>                              
 				</tr>
 			</thead>
 				<tbody>
 					<% transactions.map((transaction) => { %>
 						<tr class="border-b border-['#E0Es0E'] hover:bg-gray-100 cursor-pointer">
-							<td class="p-4 align-middle"><%= transaction.id %></td>
-							<td class="p-4 align-middle"><%= transaction.transactionType %></td>
-							<td class="p-4 align-middle"><%= transaction.totalAmount %></td>
-							<td class="p-4 align-middle"><%= transaction.date %></td>
+							<td class="px-6 py-4 align-middle h-auto w-auto whitespace-nowrap sm:px-4"><%= transaction.transactionType %></td>
+							<td class="px-6 py-4 align-middle h-auto w-auto whitespace-nowrap sm:px-4"><%= transaction.totalAmount %></td>
+							<% const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };%>
+							<td class="px-6 py-4 align-middle h-auto w-auto whitespace-nowrap sm:px-4"><%= new Date(transaction.date).toLocaleDateString("en-US", options) %></td>
 						</tr>
 					<% }); %>
 				</tbody>
 		</table>
 	</div>
-	<div class="flex justify-between items-center px-6 pb-6 mt-[100px]">
-			<div class="text-sm text-gray-500">Showing
+	<div class="flex justify-between items-center px-6 pb-6 mt-[30px] md:mt-[50px]">
+			<div class="hidden text-sm text-gray-500 md:block">Showing
 				<span> <strong>1</strong>-<strong>7</strong> </span>
 				of <strong>50</strong> customers
 			</div>

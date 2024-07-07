@@ -1,9 +1,9 @@
 <%- include(render_layouts+'dashboard_html'); -%>
 
-<main class="px-10 w-[1440px] mx-auto">
-    <div class="flex justify-between items-center my-10">
+<main class="w-full max-w-[1440px] mx-auto px-5 md:px-10">
+    <div class="flex flex-col items-center gap-5 my-5 md:gap-0 md:flex-row md:justify-between md:my-10">
         <%- include(render_customers+'search_html', { search_label: 'search for customer', search_placholder: 'Search customer...'}); -%>
-        <div class="text-sm flex items-center gap-2">
+        <div class="w-full flex items-center justify-between text-sm md:w-auto md:gap-2">
             <div>
                 <button
                     type="button"
@@ -20,22 +20,22 @@
             <button>Add customer</button>
         </div>
     </div>
-    <div>
-        <div class="w-full h-[700px] border border-b-['#E0Es0E0'] rounded-md">
-            <div class="p-6">
-                <h3 class="font-bold text-2xl">Customers</h3>
-                <p class="text-gray-500">Manage your customers account.</p>
+    <div class="mb-4">
+        <div class="w-full h-full max-h-[700px] border border-b-['#E0Es0E0'] rounded-md">
+            <div class="p-3 md:p-6">
+                <h3 class="font-bold text-xl md:text-2xl">Customers</h3>
+                <p class="text-gray-500 text-sm sm:text-base">Manage your customers account.</p>
             </div>
-            <div class="p-6 pt-0 w-full mb-auto">
+            <div class="relative overflow-x-auto p-3 pt-0 w-full mb-auto md:p-6">
                 <%- include(render_customers+'table_html'); -%>
             </div>
-            <div class="flex justify-between items-center px-6 pb-6 mt-[150px]">
-                <div class="text-sm text-gray-500">
+            <div class="flex justify-between items-center px-3 pb-3 mt-[30px] md:px-6 pb-6 md:mt-[50px]">
+                <div class="hidden text-sm text-gray-500 md:block">
                     Showing
                     <span> <strong>1</strong>-<strong>7</strong> </span>
                     of <strong>50</strong> customers
                 </div>
-                <div>pagination</div>
+                <div class="w-full md:w-auto">pagination</div>
             </div>
         </div>
     </div>
