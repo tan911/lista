@@ -3,8 +3,8 @@
     <%- include(render_partials+'head_html'); -%>
     <body class="m-h-screen antialised">
         <%- include(render_partials+'header_html', {link_to: '#', link_label: 'not_a_label', is_button: 'false'}); -%>
-        <main class="px-10 w-[1440px] mx-auto">
-            <div class="my-10 flex items-center gap-5">
+        <main class="w-full px-5 max-w-[1440px] mx-auto md:px-10">
+            <div class="flex items-center gap-5 my-4 md:my-10">
                 <button 
                     class="px-1.5 py-1 border border-['#E0E0E0'] rounded-md text-sm transition ease-in-out hover:bg-gray-100 ring-focus"
                     onClick="window.location.href='/dashboard/customers'"
@@ -14,8 +14,8 @@
                 <h1 class="text-md font-medium">Customer Profile</h1>
             </div>
 
-            <div class="flex flex-col items-center justify-center gap-10 border-b border-['#E0E0E0']">
-                <div class="flex items-center gap-40 pb-5 self-start">
+            <div class="flex items-center border-b border-['#E0E0E0'] flex-col justify-center gap-5 md:gap-10">
+                <div class="flex flex-col items-center pb-2 self-start gap-4 md:flex-row md:gap-40 md:pb-4">
                     <div class="flex items-center gap-5">
                         <div class="flex items-center justify-center w-16 h-16 bg-gray-200 rounded-full">
                             <span class="font-bold text-3xl opacity-75">JL</span>
@@ -25,7 +25,7 @@
                             <p class="inline-block rounded-full">active</p>
                         </div>
                     </div>
-                    <div class="flex gap-10">
+                    <div class="self-start flex flex-col gap-2 md:gap-10 md:flex-row">
                         <div class="flex flex-col">
                             <span class="text-sm text-gray-600">Contact</span>
                             <span class="font-medium text-md"><%= profile.contactInfo %></span>
@@ -42,11 +42,11 @@
                 </div>
                 <div class="self-start">
                     <ul class="flex gap-5">
-                        <li class="pb-5 <%= !tab_content ? 'font-semibold border-b border-gray-500' : '' %>">
-                            <a href="/dashboard/customers<%= url_tab %>" class="p-1.5 inline-block">Introduction</a>
+                        <li class="md:pb-2 <%= !tab_content ? 'font-semibold border-b border-gray-500' : '' %>">
+                            <a href="/dashboard/customers<%= url_tab %>" class="p-1 md:p-1.5 inline-block">Introduction</a>
                         </li>
-                        <li class="pb-5 <%= tab_content === 'transaction-history' ? 'font-semibold border-b border-gray-500' : '' %>">
-                            <a href="/dashboard/customers<%= url_tab %>?tab=transaction-history" class="p-1.5 inline-block">Transaction History</a>
+                        <li class="md:pb-2 <%= tab_content === 'transaction-history' ? 'font-semibold border-b border-gray-500' : '' %>">
+                            <a href="/dashboard/customers<%= url_tab %>?tab=transaction-history" class="p-1 md:p-1.5 inline-block">Transaction History</a>
                         </li>
                     </ul>
                 </div>

@@ -3,16 +3,19 @@
     "version": "1.0.0",
     "description": "Credit Management Application",
     "main": "dist/src/server.js",
+    "private": "true",
     "scripts": {
         "test": "jest",
-        "build": "pnpm build:ts && pnpm build:css",
+        "build": "pnpm build:ts && pnpm build:css && pnpm copy:views",
         "start": "node dist/src/server.js",
-        "dev": "conc \"nodemon src/server.ts public/js/index.ts\" \"rm -rf dist && cp -r public/assets/ dist\" \"pnpm build:css -w\" \"pnpm build:ts --watch\"",
+        "dev": "conc \"nodemon src/server.ts src/public/javascripts/index.ts\" \"pnpm copy:assets\" \"pnpm build:css -w\" \"pnpm build:ts --watch\"",
         "clean": "rm -rf node_modules && rm -rf dist",
         "lint": "tsc --noEmit && eslint src/**/*.ts --fix",
         "format": "prettier . --write",
-        "build:ts": "tsup",
-        "build:css": "tailwindcss -i public/css/input.css -o dist/public/css/output.css",
+        "build:ts": "tsup --tsconfig tsconfig.json",
+        "build:css": "tailwindcss -i src/public/stylesheets/input.css -o dist/src/public/stylesheets/output.css",
+        "copy:assets": "rm -rf dist/src/public/assets && cp -r src/public/assets dist/src/public/assets",
+        "copy:views": "cp -r src/views dist/src/views/",
         "db:generate": "prisma generate",
         "db:seed": "prisma db seed",
         "db:push": "prisma db push",
@@ -25,12 +28,14 @@
     "dependencies": {
         "@auth/express": "^0.5.5",
         "@prisma/client": "^5.15.0",
+        "axios": "^1.7.2",
         "cors": "^2.8.5",
         "d3": "^7.9.0",
         "dotenv": "^16.4.5",
         "ejs": "^3.1.10",
         "express": "^4.19.2",
         "express-async-errors": "^3.1.1",
+        "lucide-static": "^0.399.0",
         "morgan": "^1.10.0",
         "winston": "^3.13.0",
         "zod": "^3.23.8"
@@ -44,7 +49,6 @@
         "@types/jest": "^29.5.12",
         "@types/morgan": "^1.9.9",
         "@types/node": "^20.14.2",
-        "@types/pug": "^2.0.10",
         "concurrently": "^8.2.2",
         "eslint": "^9.5.0",
         "globals": "^15.6.0",
@@ -66,15 +70,20 @@
         "schema": "db/prisma/schema.prisma"
     },
     "tsup": {
-        "entry": [
-            "src/server.ts",
-            "public/js/index.ts"
-        ],
+        "entry": {
+            "server": "src/server.ts",
+            "public/javascripts/bundle": "src/public/javascripts/index.ts"
+        },
         "splitting": false,
-        "outDir": "dist",
+        "outDir": "dist/src",
         "bundle": true,
         "minify": true,
-        "sourcemap": true
+        "sourcemap": true,
+        "treeshake": true,
+        "format": [
+            "cjs",
+            "iife"
+        ]
     },
     "lint-staged": {
         "(src|lib)**/*.{ts,js}": [

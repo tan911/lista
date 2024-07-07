@@ -10,6 +10,60 @@ body {
     font-variation-settings: 'slnt' 0;
 }
 
+dialog {
+    max-width: 100vw;
+}
+
+.ac-input-error {
+    @apply outline outline-offset-2 outline-2 outline-red-500;
+}
+
+.btn-logout {
+    background-image: url('../assets/icon/logout.svg');
+    background-repeat: no-repeat;
+    background-position-y: center;
+    background-position-x: 25%;
+}
+
+.btn-nav-bar,
+.btn-arrow-close {
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: auto;
+}
+
+.btn-arrow-close {
+    background-image: url('../assets/icon/less-than.svg');
+}
+
+.btn-nav-bar {
+    background-image: url('../assets/icon/menu.svg');
+}
+
+.lucide-menu {
+    width: 24px;
+    height: 24px;
+}
+
+.lucide-chevron-left,
+.lucide-panels-top-left,
+.lucide-arrow-left-right,
+.lucide-users {
+    color: #6b7280;
+}
+
+.lucide-chevron-left {
+    width: 20px;
+    height: 20px;
+}
+
+.lucide-panels-top-left,
+.lucide-users,
+.lucide-arrow-left-right {
+    width: 18px;
+    height: 18px;
+}
+
 @keyframes blow-up {
     0% {
         transform: scale(0.5);
@@ -20,12 +74,16 @@ body {
 }
 
 @layer utilities {
-    .ac-modal-overlay {
+    .add-credit-modal-overlay {
         @apply bg-stone-950/[0.8] overflow-y-auto overflow-x-hidden fixed top-0 left-0 w-full h-full md:inset-0 z-10;
     }
 
     .ac-modal-btn-close {
-        @apply ring-focus self-start rounded-md border border-['#E0Es0E0'] p-1.5 text-stone-700 text-sm font-medium drop-shadow-sm transition-all ease-in-out duration-300;
+        @apply ring-focus self-start rounded-md text-stone-700 transition-all ease-in-out duration-300 p-1 md:p-1.5;
+    }
+
+    .ac-key-esc {
+        @apply p-1.5 bg-gray-100 rounded-md ml-1 font-light tracking-wide shadow-key;
     }
 
     .ac-modal-input {

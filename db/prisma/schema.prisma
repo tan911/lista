@@ -82,6 +82,7 @@ model Customer {
   id            String        @id @default(cuid())
   name          String
   contactInfo   String?
+  email         String // need migration
   creditBalance Float         @default(0)
   userId        String
   user          User          @relation(fields: [userId], references: [id], onDelete: Cascade)

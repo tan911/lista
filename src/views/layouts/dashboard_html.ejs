@@ -1,12 +1,12 @@
 <!doctype html>
 <html lang="en">
     <%- include(render_partials+'head_html') -%>
-    <body class="m-h-screen antialised">
-        <% const ref_path = url+'/add-credit?show=true' %>
-        <%- include(render_partials+'header_html', { link_to: ref_path, link_label: 'Add credit', is_button: 'true' }) -%>
+    <body class="m-h-screen antialised w-full">
 
-        <% if (showModal) { %>
-            <%- include('../dialog/add_credit_html'); -%>
-        <% }; %>
+        <%- include(render_partials+'header_html', { link_label: 'Add credit', is_button: 'true' }); -%>
+
+        <%- include(render_dialogs+'add_credit_html'); -%>
+        
+        <div id="overlay" class="invisible opacity-0 z-[5] absolute top-0 right-0 left-0 m-0 w-full md:inset-0 h-full max-h-full max-w-screen bg-black/40 transition-opacity ease-in-out duration-300"></div>
     </body>
 </html>
