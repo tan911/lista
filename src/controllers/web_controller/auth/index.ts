@@ -1,0 +1,1 @@
+export { getLoginView } from './login'
