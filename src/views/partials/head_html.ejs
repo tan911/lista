@@ -1,17 +1,24 @@
 <head>
+    <% const fall_back = { title: 'Lista', meta_description: 'Lista Streamlines sari-sari store management by digitizing customer credits, and transactions', meta_title: "Page", meta_url: 'https://lista.app' } %>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Description of the page less than 150 characters" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="description" content="<%= description ? description : fall_back.meta_description %>"/>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Lista" />
-    <meta property="og:description" content="Description Here" />
+    <meta property="og:title" content="Lista <%= title ? title : fall_back.meta_title %>" />
+    <meta property="og:description" content="<%= description ? description : fall_back.meta_description %>"/>
+    <meta property="og:url" content="<%= url ? url : fall_back.meta_url %>" />
+    <meta property="og:site_name" content="Lista" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:title" content="Lista <%= title ? title : fall_back.meta_title %>" />
+    <meta name="twitter:description" content="<%= description ? description : fall_back.meta_description %>"/>
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="author" content="Jovan Lanutan" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="<%= url ? url : fall_back.meta_url %>" />
     <link rel="icon" type="image/png" href="https://example.com/favicon.png" />
-    <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
-    />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" />
     <link rel="stylesheet" href="/src/public/stylesheets/output.css" />
     <script type="module" defer src="/src/public/javascripts/bundle.global.js"></script>
-    <title>Lista</title>
+    <title><%= title ? title : fall_back.title %></title>
 </head>

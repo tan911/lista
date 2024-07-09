@@ -71,4 +71,5 @@ export {
     getTransactionModal,
     getTransactionView,
     getCustomerById,
-} from './views_controller/index'
+    getLoginView,
+} from './web_controller'

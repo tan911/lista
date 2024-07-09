@@ -4,19 +4,22 @@ import morgan from 'morgan'
 import path from 'path'
 
 import { createLogger } from '../lib/logger'
-import { transactionRouter, viewRouter } from './routes'
+import { transactionRouter, webRouter } from './routes'
 import { errorHandler, errorNotFoundHandler } from './middlewares/error_middleware'
+import { validateHeaders, validateAuthSession } from './middlewares/auth_middleware'
 import appLocals from './utils/app_local_util'
 
 const app = express()
 const logger = createLogger('verbose')
 
 // Ejs path views
-app.locals = appLocals
+app.locals.template = appLocals
 
 // Templating engine
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
+
+app.set('trust proxy', true)
 
 // Static files
 app.use(express.static('dist'))
@@ -36,8 +39,11 @@ app.use(
     })
 )
 
-// Views routes
-app.use('/dashboard', viewRouter)
+// App routes
+app.use('/web', validateHeaders, webRouter)
+
+// All routes defined after this will be protected
+app.use('/api/v1', validateHeaders, validateAuthSession)
 
 // Api routes
 app.use('/api/v1/transactions', transactionRouter)

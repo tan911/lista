@@ -1,14 +1,13 @@
 {
     "name": "lista",
     "version": "1.0.0",
-    "description": "Credit Management Application",
     "main": "dist/src/server.js",
     "private": "true",
     "scripts": {
         "test": "jest",
         "build": "pnpm build:ts && pnpm build:css && pnpm copy:views",
         "start": "node dist/src/server.js",
-        "dev": "conc \"nodemon src/server.ts src/public/javascripts/index.ts\" \"pnpm copy:assets\" \"pnpm build:css -w\" \"pnpm build:ts --watch\"",
+        "dev": "conc \"tsx --watch src/server.ts src/public/javascripts/index.ts\" \"pnpm copy:assets\" \"pnpm build:css -w\" \"pnpm build:ts --watch\"",
         "clean": "rm -rf node_modules && rm -rf dist",
         "lint": "tsc --noEmit && eslint src/**/*.ts --fix",
         "format": "prettier . --write",
@@ -26,7 +25,7 @@
     "author": "Jovan Lanutan <jolanutan@gmail.com>",
     "license": "ISC",
     "dependencies": {
-        "@auth/express": "^0.5.5",
+        "@lucia-auth/adapter-prisma": "^4.0.1",
         "@prisma/client": "^5.15.0",
         "axios": "^1.7.2",
         "cors": "^2.8.5",
@@ -35,6 +34,7 @@
         "ejs": "^3.1.10",
         "express": "^4.19.2",
         "express-async-errors": "^3.1.1",
+        "lucia": "^3.2.0",
         "lucide-static": "^0.399.0",
         "morgan": "^1.10.0",
         "winston": "^3.13.0",
@@ -62,6 +62,7 @@
         "ts-jest": "^29.1.5",
         "ts-node": "^10.9.2",
         "tsup": "^8.1.0",
+        "tsx": "^4.16.2",
         "typescript": "^5.4.5",
         "typescript-eslint": "^7.14.1"
     },

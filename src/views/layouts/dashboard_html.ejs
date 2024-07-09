@@ -1,11 +1,11 @@
 <!doctype html>
 <html lang="en">
-    <%- include(render_partials+'head_html') -%>
+    <%- include(template.render_partials+'head_html', { title: meta_data.title, description: meta_data.description, url: meta_data.url }); -%>
     <body class="m-h-screen antialised w-full">
 
-        <%- include(render_partials+'header_html', { link_label: 'Add credit', is_button: 'true' }); -%>
+        <%- include(template.render_partials+'header_html', { link_label: 'Add credit', is_button: 'true' }); -%>
 
-        <%- include(render_dialogs+'add_credit_html'); -%>
+        <%- include(template.render_dialogs+'add_credit_html'); -%>
         
         <div id="overlay" class="invisible opacity-0 z-[5] absolute top-0 right-0 left-0 m-0 w-full md:inset-0 h-full max-h-full max-w-screen bg-black/40 transition-opacity ease-in-out duration-300"></div>
     </body>
