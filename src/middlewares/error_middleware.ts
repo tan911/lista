@@ -1,6 +1,6 @@
 import type { Request, Response, NextFunction } from 'express'
-import { AppError, NotFoundError } from '../utils/error_util'
-import { createLogger } from '../../lib/logger'
+import { AppError, NotFoundError } from '@utils'
+import { createLogger } from '@lib'
 
 const logger = createLogger('verbose')
 

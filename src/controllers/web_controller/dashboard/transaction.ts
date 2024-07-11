@@ -1,5 +1,5 @@
 import type { Request, Response } from 'express'
-import { routes, meta } from '../../../utils/views_util'
+import { routes, meta } from '@utils'
 
 export async function getTransactionView(req: Request, res: Response) {
     return res.status(200).render('pages/dashboard/transaction_html', {

@@ -1,6 +1,6 @@
 import type { Request, Response } from 'express'
-import { routes, meta } from '../../../utils/views_util'
-import { transaction, customer } from '../../../services'
+import { routes, meta } from '@utils'
+import { transaction, customer } from '@services'
 
 export async function getOverview(req: Request, res: Response) {
     const revenue = await transaction.getRevenue()

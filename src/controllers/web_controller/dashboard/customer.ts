@@ -1,7 +1,7 @@
 import type { Request, Response } from 'express'
-import { routes, meta } from '../../../utils/views_util'
+import { routes, meta } from '@utils'
 
-import { customer, transaction } from '../../../services'
+import { customer, transaction } from '@services'
 
 export async function getCustomerView(req: Request, res: Response) {
     const customers = await customer.get()

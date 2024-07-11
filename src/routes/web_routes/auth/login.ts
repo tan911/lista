@@ -1,6 +1,6 @@
 import { Router } from 'express'
 
-import { getLoginView } from '../../../controllers'
+import { getLoginView } from '@controllers'
 
 const route: Router = Router()
 

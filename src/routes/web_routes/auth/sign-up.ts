@@ -1,6 +1,6 @@
 import { Router } from 'express'
 
-import { getSignUpView } from '../../../controllers'
+import { getSignUpView } from '@controllers'
 const route: Router = Router()
 
 route.get('/', getSignUpView)

@@ -1,6 +1,6 @@
 import { Router } from 'express'
 
-import { getOverview, getOverviewModal } from '../../../controllers'
+import { getOverview, getOverviewModal } from '@controllers'
 
 const route: Router = Router()
 

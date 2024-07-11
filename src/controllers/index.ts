@@ -1,4 +1,4 @@
-import { prisma } from '../../db'
+import { prisma } from '@db'
 import { Request, Response, NextFunction } from 'express'
 import { TransactionController } from './transaction_controller'
 
