@@ -1,9 +1,9 @@
 <div class="flex items-center justify-center mt-12 sm:mt-28 md:mt-32">
     <main class="mx-auto w-full max-w-[450px]">
-        <h1 class="text-center text-xl font-bold tracking-tight sm:text-left">Log in account</h1>
+        <h1 class="text-center text-xl font-bold tracking-tight sm:text-left">Create an account</h1>
         <p class="mb-8 text-center text-base font-normal sm:text-left">
-            Don't have an account?
-            <a href="/web/auth/signup" class="underline underline-offset-2">Sign up.</a>
+            Already have an account?
+            <a href="/web/auth/login" class="underline underline-offset-2">Login.</a>
         </p>
         <form>
             <div class="mb-4 space-y-2">
@@ -15,15 +15,7 @@
                 />
             </div>
             <div class="mb-6 space-y-2">
-                <div class="flex flex-row justify-between">
-                    <label for="password" class="text-sm text-slate-11 text-sm">Password</label>
-                    <a
-                        class="text-sm underline underline-offset-2"
-                        tabindex="-1"
-                        href="/web/auth/reset-password"
-                        >Forgot your password?</a
-                    >
-                </div>
+                <label for="password" class="text-sm text-slate-11 text-sm">Password</label>
                 <input
                     type="password"
                     placeholder="••••••••••••"
@@ -35,7 +27,7 @@
                 type="submit"
                 disabled
             >
-                Continue
+                Create account
             </button>
         </form>
         <div class="my-6 flex items-center justify-center">

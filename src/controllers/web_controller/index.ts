@@ -7,4 +7,4 @@ export {
     getTransactionView,
     getCustomerById,
 } from './dashboard'
-export { getLoginView } from './auth'
+export { getLoginView, getSignUpView } from './auth'

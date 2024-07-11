@@ -24,6 +24,10 @@ app.set('trust proxy', true)
 // Static files
 app.use(express.static('dist'))
 
+app.get('/', (req, res) => {
+    return res.render('pages/home/landing_html')
+})
+
 // Parse incoming requests data
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())

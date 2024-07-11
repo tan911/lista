@@ -74,6 +74,10 @@ dialog {
 }
 
 @layer utilities {
+    .auth-ring-input:focus-visible {
+        @apply ring-2 ring-offset-0 ring-stone-900;
+    }
+
     .add-credit-modal-overlay {
         @apply bg-stone-950/[0.8] overflow-y-auto overflow-x-hidden fixed top-0 left-0 w-full h-full md:inset-0 z-10;
     }

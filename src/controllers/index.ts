@@ -72,4 +72,5 @@ export {
     getTransactionView,
     getCustomerById,
     getLoginView,
+    getSignUpView,
 } from './web_controller'
