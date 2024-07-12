@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-    <%- include(template.render_partials+'head_html'); -%>
+    <%- include(template.render_partials+'head_html', { title: meta_data.title, description: meta_data.description, url: meta_data.url}); -%>
     <body class="m-h-screen antialised">
         <%- include(template.render_partials+'header_html', {link_to: '#', link_label: 'not_a_label', is_button: 'false'}); -%>
         <main class="w-full px-5 max-w-[1440px] mx-auto md:px-10">

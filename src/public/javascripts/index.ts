@@ -14,19 +14,18 @@ const overlay = document.getElementById('overlay') as HTMLElement
 
 function dialogEvents(event: Event) {
     const eventTarget = event.target as HTMLElement
+    const isClickWithIn = eventTarget.closest('#btn-add-credit-modal-close')
     if (eventTarget.id === 'btn-add-credit-modal-open') {
         addCreditDialog.open()
-    } else if (
-        [
-            'add-credit-modal',
-            'btn-add-credit-modal-close',
-            'btn-add-credit-modal-key',
-            'btn-add-credit-modal-name',
-        ].includes(eventTarget.id)
-    ) {
+    } else if (['btn-add-credit-modal-close'].includes(eventTarget.id) || isClickWithIn) {
         addCreditDialog.close()
+        event.stopPropagation()
     } else if (eventTarget.id === 'btn-add-credit-modal-cancel') {
         addCreditDialog.cancel()
+        event.stopPropagation()
+    } else if (eventTarget.id === 'add-credit-modal') {
+        addCreditDialog.close()
+        event.stopPropagation()
     }
 }
 

@@ -71,10 +71,11 @@ export class AddCredit extends Dialog {
         this.dialogEl.close()
 
         const paths = document.location.pathname.split('/')
-        const hasMainPath =
-            paths[paths.length - 2] === 'dashboard'
-                ? 'dashboard'
-                : `dashboard/${paths[paths.length - 2]}`
+        const secondLastRoutes = paths[paths.length - 2]
+
+        const hasMainPath = ['customers', 'transactions'].includes(secondLastRoutes)
+            ? `web/dashboard/${secondLastRoutes}`
+            : `web/dashboard`
 
         window.history.replaceState({}, '', `${document.location.origin}/${hasMainPath}`)
     }
