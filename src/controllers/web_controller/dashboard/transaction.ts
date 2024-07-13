@@ -6,6 +6,11 @@ export async function getTransactionView(req: Request, res: Response) {
         routes,
         current_route: 'transactions',
         url: req.originalUrl,
+        header: {
+            link_to: '#',
+            link_label: 'Add credit',
+            is_button: 'true',
+        },
         meta_data: {
             ...meta,
             url: req.protocol + '://' + req.get('host') + req.originalUrl,
@@ -22,6 +27,11 @@ export async function getTransactionModal(req: Request, res: Response) {
         routes,
         current_route: 'transactions',
         url: '/web/dashboard/transactions',
+        header: {
+            link_to: '#',
+            link_label: 'Add credit',
+            is_button: 'true',
+        },
         meta_data: {
             ...meta,
             url: req.protocol + '://' + req.get('host') + req.originalUrl,

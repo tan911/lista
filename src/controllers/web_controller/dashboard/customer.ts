@@ -11,6 +11,11 @@ export async function getCustomerView(req: Request, res: Response) {
         current_route: 'customers',
         url: req.originalUrl,
         customers: customers.customer,
+        header: {
+            link_to: '#',
+            link_label: 'Add credit',
+            is_button: 'true',
+        },
         meta_data: {
             ...meta,
             url: req.protocol + '://' + req.get('host') + req.originalUrl,
@@ -30,6 +35,11 @@ export async function getCustomerModal(req: Request, res: Response) {
         current_route: 'customers',
         url: '/web/dashboard/customers',
         customers: customers.customer,
+        header: {
+            link_to: '#',
+            link_label: 'Add credit',
+            is_button: 'true',
+        },
         meta_data: {
             ...meta,
             url: req.protocol + '://' + req.get('host') + req.originalUrl,
@@ -48,10 +58,15 @@ export async function getCustomerById(req: Request, res: Response) {
     return res.render('customers/profile_html', {
         routes,
         current_route: 'customers',
-        profile: customerProfile,
         tab_content: tab,
         url_tab: req.path,
+        profile: customerProfile,
         transactions: transactionHistory,
+        header: {
+            link_to: '#',
+            link_label: 'not_a_label',
+            is_button: 'false',
+        },
         meta_data: {
             ...meta,
             url: req.protocol + '://' + req.get('host') + req.originalUrl,

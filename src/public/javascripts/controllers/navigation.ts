@@ -1,46 +1,53 @@
 export class NavigationBar {
     public navId: string
     public navEl: HTMLElement
+    private overlay = document.getElementById('overlay') as HTMLElement
+    private sidebarEl = document.getElementById('nav-list-cta') as HTMLElement
+    private navbarBtnEl = document.getElementById('btn-nav-toggle') as HTMLElement;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    [key: string]: any
+
     constructor(navId: string) {
         this.navId = navId
-        this.navEl = document.getElementById(navId) as HTMLElement
+        this.navEl = document.getElementById(this.navId) as HTMLElement
+        this.navEl.onclick = this.toggle.bind(this)
+        this.onCickOutside()
     }
 
     public collapse() {
-        const btn = document.getElementById('btn-nav-toggle')
-        const overlay = document.getElementById('overlay')
-
-        if (btn && overlay) {
-            btn.setAttribute('aria-expanded', 'false')
-            this.navEl.setAttribute('data-visible', 'false')
-            this.navEl.classList.remove('left-0')
-            this.navEl.classList.add('left-[-1000px]')
-            overlay.classList.remove('visible', 'opacity-100')
-            overlay.classList.add('opacity-0', 'invisible')
+        if (this.navbarBtnEl && this.overlay) {
+            this.navbarBtnEl.setAttribute('aria-expanded', 'false')
+            this.sidebarEl.setAttribute('data-visible', 'false')
+            this.sidebarEl.classList.remove('left-0')
+            this.sidebarEl.classList.add('left-[-1000px]')
+            this.overlay.classList.remove('visible', 'opacity-100')
+            this.overlay.classList.add('opacity-0', 'invisible')
         }
     }
 
     public expand() {
-        const btn = document.getElementById('btn-nav-toggle')
-        const overlay = document.getElementById('overlay')
-
-        if (btn && overlay) {
-            btn.setAttribute('aria-expanded', 'true')
-            this.navEl.setAttribute('data-visible', 'true')
-            this.navEl.classList.remove('left-[-1000px]')
-            this.navEl.classList.add('left-0')
-            overlay.classList.remove('invisible', 'opacity-0')
-            overlay.classList.add('visible', 'opacity-100')
+        if (this.navbarBtnEl && this.overlay) {
+            this.navbarBtnEl.setAttribute('aria-expanded', 'true')
+            this.sidebarEl.setAttribute('data-visible', 'true')
+            this.sidebarEl.classList.remove('left-[-1000px]')
+            this.sidebarEl.classList.add('left-0')
+            this.overlay.classList.remove('invisible', 'opacity-0')
+            this.overlay.classList.add('visible', 'opacity-100')
         }
     }
 
-    public toggle() {
-        const isShow = this.navEl.getAttribute('data-visible') as string
+    public toggle(event: Event) {
+        const targetEl = event.target as HTMLElement
+        const action = targetEl.dataset.toggle
 
-        if (String(isShow) === 'false') {
-            this.expand()
-        } else {
-            this.collapse()
+        if (action) {
+            this[action]()
+        }
+    }
+
+    public onCickOutside() {
+        if (this.overlay) {
+            this.overlay.addEventListener('click', () => this.collapse())
         }
     }
 }

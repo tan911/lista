@@ -12,6 +12,11 @@ export async function getOverview(req: Request, res: Response) {
         url: req.originalUrl,
         revenue,
         count: customers.customerCount,
+        header: {
+            link_to: '#',
+            link_label: 'Add credit',
+            is_button: 'true',
+        },
         meta_data: {
             ...meta,
             url: req.protocol + '://' + req.get('host') + req.originalUrl,
@@ -32,6 +37,11 @@ export async function getOverviewModal(req: Request, res: Response) {
         current_route: 'overview',
         revenue,
         count: customers.customerCount,
+        header: {
+            link_to: '#',
+            link_label: 'Add credit',
+            is_button: 'true',
+        },
         meta_data: {
             ...meta,
             url: req.protocol + '://' + req.get('host') + req.originalUrl,
