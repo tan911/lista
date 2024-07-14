@@ -1,5 +1,5 @@
 <div class="flex items-center justify-center mt-12 sm:mt-28 md:mt-32">
-    <main class="mx-auto w-full max-w-[450px]">
+    <main id="auth-page" class="mx-auto w-full max-w-[450px]">
         <h1 class="text-center text-xl font-bold tracking-tight sm:text-left">Create an account</h1>
         <p class="mb-8 text-center text-base font-normal sm:text-left">
             Already have an account?
@@ -7,9 +7,23 @@
         </p>
         <form>
             <div class="mb-4 space-y-2">
+                <label for="name" class="text-sm text-slate-11 text-sm">Name</label>
+                <input
+                    id="name"
+                    type="text"
+                    name="username"
+                    placeholder="your name"
+                    required
+                    class="auth-ring-input shadow-sm h-9 w-full text-base rounded-md px-3 py-1 border transition ease-in-out duration-200 outline-none placeholder:text-sm sm:text-sm disabled:opacity-75 disabled:cursor-not-allowed"
+                />
+            </div>
+            <div class="mb-4 space-y-2">
                 <label for="email" class="text-sm text-slate-11 text-sm">Email</label>
                 <input
+                    id="email"
                     type="text"
+                    name="email"
+                    required
                     placeholder="your@email.com"
                     class="auth-ring-input shadow-sm h-9 w-full text-base rounded-md px-3 py-1 border transition ease-in-out duration-200 outline-none placeholder:text-sm sm:text-sm disabled:opacity-75 disabled:cursor-not-allowed"
                 />
@@ -17,13 +31,17 @@
             <div class="mb-6 space-y-2">
                 <label for="password" class="text-sm text-slate-11 text-sm">Password</label>
                 <input
+                    id="password"
                     type="password"
+                    name="password"
+                    required
                     placeholder="••••••••••••"
                     class="auth-ring-input shadow-sm h-9 w-full text-base rounded-md px-3 py-1 border transition ease-in-out duration-200 outline-none placeholder:text-sm sm:text-sm disabled:opacity-75 disabled:cursor-not-allowed"
                 />
             </div>
             <button
-                class="h-10 text-sm px-4 py-2 rounded-md font-semibold inline-flex items-center justify-center whitespace-nowrap w-full block bg-stone-900 text-white cursor-pointer disabled:cursor-not-allowed hover:bg-stone-800 disabled:opacity-75"
+                data-action-account="signup"
+                class="h-10 text-sm px-4 py-2 rounded-md font-semibold inline-flex items-center justify-center whitespace-nowrap w-full block bg-stone-900 text-white cursor-pointer disabled:cursor-not-allowed hover:bg-stone-800 disabled:hover:bg-stone-900 disabled:opacity-75"
                 type="submit"
                 disabled
             >
@@ -37,6 +55,8 @@
         </div>
         <form>
             <button
+                type="button"
+                data-action-account="oauth"
                 class="h-10 text-sm px-4 py-2 inline-flex items-center justify-center w-full border border-['#E0Es0E0'] rounded-md shadow-sm cursor-pointer whitespace-nowrap font-medium hover:bg-gray-50"
             >
                 <svg

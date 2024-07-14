@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest'
 import { req, res } from '../__mocks__/index'
 import { getCustomerView, getCustomerModal, getCustomerById } from '../../src/controllers'
 

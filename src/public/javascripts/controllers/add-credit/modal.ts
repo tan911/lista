@@ -1,6 +1,6 @@
 import { z } from 'zod'
 import { getInputData } from '../../inputs/add-credit'
-import { inputSchema, inputFieldSchema, InputSchema } from '../../../../../lib/schema'
+import { FormSchema, inputFieldSchema, InputSchema } from '../../schema/credit'
 import { Dialog } from '../dialog'
 import { Button } from '../button'
 import { DialogButton } from './button'
@@ -17,7 +17,9 @@ export class CreditModal extends Dialog {
         this.dialogEl = document.getElementById(this.modalId) as HTMLDialogElement
         this.button = new DialogButton('btn-add-credit-modal-open', this)
         this.modalId = modalId
-        this.dialogEl.onclick = this.onEvent.bind(this)
+        if (this.dialogEl) {
+            this.dialogEl.onclick = this.onEvent.bind(this)
+        }
     }
 
     public open() {
@@ -87,7 +89,7 @@ export class CreditModal extends Dialog {
 
     public async add() {
         const inputData = await getInputData()
-        const validateInputs = await inputSchema.safeParseAsync(inputData)
+        const validateInputs = await FormSchema.safeParseAsync(inputData)
 
         try {
             let issues: z.ZodIssue[]

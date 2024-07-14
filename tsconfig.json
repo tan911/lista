@@ -16,7 +16,8 @@
         "sourceMap": true,
         "strict": true,
         "target": "ESNext",
-        "lib": ["dom"],
+        "lib": ["dom", "DOM.Iterable"],
+        "types": ["vitest/globals"],
         "paths": {
             "@config": ["src/config/index.ts"],
             "@controllers": ["src/controllers/index.ts"],

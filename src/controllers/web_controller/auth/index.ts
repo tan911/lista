@@ -1,2 +1,2 @@
 export { getLoginView } from './login'
-export { getSignUpView } from './sign-up'
+export { getSignUpView, signUp } from './sign-up'

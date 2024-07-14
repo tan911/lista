@@ -8,10 +8,12 @@ export class NavigationBar {
     [key: string]: any
 
     constructor(navId: string) {
+        this.onCickOutside()
         this.navId = navId
         this.navEl = document.getElementById(this.navId) as HTMLElement
-        this.navEl.onclick = this.toggle.bind(this)
-        this.onCickOutside()
+        if (this.navEl) {
+            this.navEl.onclick = this.toggle.bind(this)
+        }
     }
 
     public collapse() {

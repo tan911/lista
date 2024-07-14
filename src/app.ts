@@ -3,6 +3,7 @@ import 'module-alias/register'
 import express from 'express'
 import morgan from 'morgan'
 import path from 'path'
+import cors from 'cors'
 
 import { createLogger } from '@lib'
 import { template } from '@utils'
@@ -19,6 +20,9 @@ const logger = createLogger('verbose')
 
 // Ejs path views
 app.locals.template = template
+
+// NEED WORK
+app.use(cors({ origin: [], credentials: true }))
 
 // Templating engine
 app.set('view engine', 'ejs')
