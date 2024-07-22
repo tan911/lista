@@ -1,6 +1,6 @@
 import { Router } from 'express'
 
-import { getCustomerView, getCustomerModal, getCustomerById } from '../../controllers'
+import { getCustomerView, getCustomerModal, getCustomerById } from '@controllers'
 
 const route: Router = Router()
 

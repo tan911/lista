@@ -1,6 +1,6 @@
 import { Router } from 'express'
 
-import { getTransactionView, getTransactionModal } from '../../controllers'
+import { getTransactionView, getTransactionModal } from '@controllers'
 
 const route: Router = Router()
 

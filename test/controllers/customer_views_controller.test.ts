@@ -1,5 +1,6 @@
+import { describe, it, expect } from 'vitest'
 import { req, res } from '../__mocks__/index'
-import { getCustomerView, getCustomerModal, getCustomerById } from '../../src/controllers/index'
+import { getCustomerView, getCustomerModal, getCustomerById } from '../../src/controllers'
 
 const controllers = [getCustomerView, getCustomerModal, getCustomerById]
 

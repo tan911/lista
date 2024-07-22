@@ -1,2 +1,2 @@
 export { default as transactionRouter } from './transaction_route'
-export { default as viewRouter } from './views_routes'
+export { default as webRouter } from './web_routes'

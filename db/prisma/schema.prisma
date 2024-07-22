@@ -28,6 +28,7 @@ model User {
   id            String        @id @default(cuid())
   name          String?
   email         String        @unique
+  password      String?
   emailVerified DateTime?
   image         String?
   accounts      Account[]
@@ -60,13 +61,14 @@ model Account {
 }
 
 model Session {
-  sessionToken String   @unique
-  userId       String
-  expires      DateTime
-  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id        String   @id @unique
+  userId    String
+  expiresAt DateTime
+  fresh     Boolean?
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  updatedAt DateTime @default(now()) @updatedAt
 }
 
 model VerificationToken {
@@ -81,8 +83,8 @@ model VerificationToken {
 model Customer {
   id            String        @id @default(cuid())
   name          String
+  email         String?       @unique
   contactInfo   String?
-  email         String // need migration
   creditBalance Float         @default(0)
   userId        String
   user          User          @relation(fields: [userId], references: [id], onDelete: Cascade)

@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { endpoint } from './../controllers'
+import { endpoint } from '@controllers'
 
 const router = Router()
 

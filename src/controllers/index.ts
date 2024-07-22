@@ -1,4 +1,4 @@
-import { prisma } from '../../db'
+import { prisma } from '@db'
 import { Request, Response, NextFunction } from 'express'
 import { TransactionController } from './transaction_controller'
 
@@ -71,4 +71,8 @@ export {
     getTransactionModal,
     getTransactionView,
     getCustomerById,
-} from './views_controller/index'
+    getLoginView,
+    getSignUpView,
+    signUp,
+    login,
+} from './web_controller'

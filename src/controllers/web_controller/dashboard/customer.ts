@@ -1,7 +1,7 @@
 import type { Request, Response } from 'express'
-import { routes } from '../../utils/route_util'
+import { routes, meta } from '@utils'
 
-import { customer, transaction } from '../../services'
+import { customer, transaction } from '@services'
 
 export async function getCustomerView(req: Request, res: Response) {
     const customers = await customer.get()
@@ -11,22 +11,39 @@ export async function getCustomerView(req: Request, res: Response) {
         current_route: 'customers',
         url: req.originalUrl,
         customers: customers.customer,
+        header: {
+            link_to: '#',
+            link_label: 'Add credit',
+            is_button: 'true',
+        },
+        meta_data: {
+            ...meta,
+            url: req.protocol + '://' + req.get('host') + req.originalUrl,
+        },
     })
 }
 
 export async function getCustomerModal(req: Request, res: Response) {
     const customers = await customer.get()
 
-    // redirect to 'dashboard/customers' path
     if (req.query.show !== 'true') {
-        return res.redirect('/dashboard/customers')
+        return res.redirect('/web/dashboard/customers')
     }
 
     return res.render('pages/dashboard/customer_html', {
         routes,
         current_route: 'customers',
-        url: '/dashboard/customers',
+        url: '/web/dashboard/customers',
         customers: customers.customer,
+        header: {
+            link_to: '#',
+            link_label: 'Add credit',
+            is_button: 'true',
+        },
+        meta_data: {
+            ...meta,
+            url: req.protocol + '://' + req.get('host') + req.originalUrl,
+        },
     })
 }
 
@@ -41,9 +58,18 @@ export async function getCustomerById(req: Request, res: Response) {
     return res.render('customers/profile_html', {
         routes,
         current_route: 'customers',
-        profile: customerProfile,
         tab_content: tab,
         url_tab: req.path,
+        profile: customerProfile,
         transactions: transactionHistory,
+        header: {
+            link_to: '#',
+            link_label: 'not_a_label',
+            is_button: 'false',
+        },
+        meta_data: {
+            ...meta,
+            url: req.protocol + '://' + req.get('host') + req.originalUrl,
+        },
     })
 }

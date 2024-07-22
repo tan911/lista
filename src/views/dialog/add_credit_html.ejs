@@ -2,7 +2,7 @@
     id="add-credit-modal"
     aria-labelledby="add-credit-title"
     aria-describedby="add-credit-desc"
-    class="fixed top-0 right-0 left-0 m-0 w-full md:inset-0 h-full max-h-full max-w-screen bg-black/40"
+    class="fixed top-0 right-0 left-0 m-0 w-full md:inset-0 h-full max-h-full max-w-screen bg-black/40 z-[100]"
 >
     <div class="relative w-max-content h-max-content animate-modal">
         <div class="relative flex flex-col p-6 bg-white rounded-xl shadow-xs">
@@ -19,17 +19,14 @@
                     </p>
                 </div>
                 <button
+                    data-action="close"
                     id="btn-add-credit-modal-close"
                     aria-label="close"
                     class="ac-modal-btn-close"
                     value="close"
                 >
-                    <span id="btn-add-credit-modal-name" class="font-light text-md">Close</span>
-                    <span
-                        id="btn-add-credit-modal-key"
-                        class="ac-key-esc text-sm hidden md:inline-block"
-                        >ESC</span
-                    >
+                    <span class="font-light text-md">Close</span>
+                    <span class="ac-key-esc text-sm hidden md:inline-block">ESC</span>
                 </button>
             </div>
             <form
@@ -138,6 +135,7 @@
                 </div>
                 <div class="flex flex-col col-span-2 mt-10 md:mt-20 md:place-self-end md:flex-row">
                     <button
+                        data-action="cancel"
                         type="button"
                         id="btn-add-credit-modal-cancel"
                         aria-label="cancel"
@@ -147,6 +145,7 @@
                         Cancel
                     </button>
                     <button
+                        data-action="add"
                         type="submit"
                         aria-label="add"
                         value="add"

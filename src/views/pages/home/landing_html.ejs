@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-    <%- include('../../layout/head_html'); -%>
+    <%- include(template.render_partials+'head_html', { title: 'Lista', description: 'Lista: Effortlessly manage customer credits, accounts, and transactions for your sari-sari store.', url: ''}); -%>
     <body class="antialised">
         <main>
             <h3>Streamline Your Sari-Sari Store Operations with Ease</h3>
@@ -10,8 +10,8 @@
                 and provide better service to your customers.
             </p>
 
-            <button>Sign Up</button>
-            <button>Log In</button>
+            <a href="/web/auth/signup">Sign Up</a>
+            <a href="/web/auth/login">Log In</a>
         </main>
     </body>
 </html>

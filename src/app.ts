@@ -1,25 +1,42 @@
 import 'dotenv/config'
+import 'module-alias/register'
 import express from 'express'
 import morgan from 'morgan'
 import path from 'path'
+import cors from 'cors'
 
-import { createLogger } from '../lib/logger'
-import { transactionRouter, viewRouter } from './routes'
-import { errorHandler, errorNotFoundHandler } from './middlewares/error_middleware'
-import appLocals from './utils/app_local_util'
+import { createLogger } from '@lib'
+import { template } from '@utils'
+import { transactionRouter, webRouter } from '@routes'
+import {
+    errorHandler,
+    errorNotFoundHandler,
+    validateAuthSession,
+    validateHeaders,
+} from '@middlewares'
 
 const app = express()
 const logger = createLogger('verbose')
 
 // Ejs path views
-app.locals = appLocals
+app.locals.template = template
+
+// NEED WORK
+app.use(cors({ origin: [], credentials: true }))
 
 // Templating engine
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
 
+// enable proxies
+app.set('trust proxy', true)
+
 // Static files
 app.use(express.static('dist'))
+
+app.get('/', (req, res) => {
+    return res.render('pages/home/landing_html')
+})
 
 // Parse incoming requests data
 app.use(express.urlencoded({ extended: false }))
@@ -36,8 +53,11 @@ app.use(
     })
 )
 
-// Views routes
-app.use('/dashboard', viewRouter)
+// App routes
+app.use('/web', validateHeaders, webRouter)
+
+// All routes defined after this will be protected
+app.use('/api/v1', validateHeaders, validateAuthSession)
 
 // Api routes
 app.use('/api/v1/transactions', transactionRouter)

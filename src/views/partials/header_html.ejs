@@ -1,5 +1,5 @@
 <header class="flex h-[64px] border-b border-['#E0Es0E0'] md:items-center md:justify-center">
-    <nav class="relative w-full max-w-[1440px] px-5 flex items-center justify-between md:px-10">
+    <nav id="navbar" class="relative w-full max-w-[1440px] px-5 flex items-center justify-between md:px-10">
         <div class="w-[50%] md:flex md:items-center md:justify-between md:w-0">
             <a href="#" class="font-bold text-2xl tracking-tight md:mr-10"> Lista </a>
             <ul data-visible="false" id="nav-list-cta" class="absolute inset-y-0 left-[-1000px] h-screen z-[999] w-[70%] bg-white border border-r border-['#E0Es0E0'] pt-32 px-4 shadow-left-xl text-base transition-left duration-500 ease-in-out sm:w-[30%] md:h-0 md:static md:z-0 md:flex md:items-center md:gap-5 md:shadow-none md:w-full md:border-none md:p-0">
@@ -8,7 +8,7 @@
                         <span class="ml-4">Logout</span>
                     </button>
                 </div>    
-                <button id="btn-nav-close" type="button" class="btn-arrow-close absolute right-4 top-10 font-light p-2 w-9 h-9 border border-r border-['#E0Es0E0'] rounded-md ring-focus md:hidden">
+                <button data-toggle="collapse" id="btn-nav-close" type="button" class="btn-arrow-close absolute right-4 top-10 font-light p-2 w-9 h-9 border border-r border-['#E0Es0E0'] rounded-md ring-focus md:hidden">
                     <span id="btn-nav-close-name" class="sr-only">Close menu button</span>
                 </button>
                     <% routes.map((route) => { %>
@@ -33,9 +33,36 @@
                         ><%= link_label %></button>
                 </div>
             <% } %>
-
-            <button type="button" class="hidden inline-block h-9 w-9 rounded-full bg-gray-400 md:flex"></button>
-            <button id="btn-nav-toggle" type="button" aria-expanded="false" aria-controls="nav-list-cta" class="btn-nav-bar ring-focus px-2 py-1 w-9 h-9 border border-['#E0Es0E0'] rounded-md md:hidden">
+             
+            <div id="user-profile" class="relative">
+                <button aria-expanded="false" type="button" class="hidden inline-block h-9 w-9 rounded-full bg-gray-200 border-2 border-gray-300 md:flex"></button>
+                <div data-toggle="profile" class="hidden absolute right-[-22px] bottom-[-90px] shadow-2xl bg-gray-100 rounded-xl border border-slate-300 p-2">
+                    <ul role="profile-menu" class="w-[200px]">
+                        <% routes.map((route) => { %>
+                            <% route.name === current_route && route.account.map(item => { %>
+                                <li>
+                                    <% if(['Sign out'].includes(item.name)) { %>
+                                        <div class="flex items-center cursor-pointer p-1">
+                                            <span class="w-5 h-5 mr-3">
+                                                <%- item.icon %>
+                                            </span>
+                                            <span><%= item.name %></span>
+                                        </div>
+                                    <% } else { %>
+                                        <a href="/web/dashboard/<%= item.name.toLowerCase() %>" class="flex p-1">
+                                            <span class="w-5 h-5 mr-3">
+                                                <%- item.icon %>
+                                            </span>
+                                            <span><%= item.name %></span>
+                                        </a>
+                                    <% } %>
+                                </li>
+                            <% }) %>
+                        <% }); %>
+                    </ul>
+                </div>
+            </div>
+            <button data-toggle="expand" id="btn-nav-toggle" type="button" aria-expanded="false" aria-controls="nav-list-cta" class="btn-nav-bar ring-focus px-2 py-1 w-9 h-9 border border-['#E0Es0E0'] rounded-md md:hidden">
                 <span id="btn-nav-toggle-name" class="sr-only">Open menu button</span>
             </button>
             
