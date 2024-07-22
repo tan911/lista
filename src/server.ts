@@ -13,7 +13,7 @@ process.on('uncaughtException', (error) => {
 })
 
 const server = app.listen(port, () => {
-    logger.info(`Server running at \t\thttp:localhost:${port}`)
+    logger.info(`Server running at \t\thttp://localhost:${port}`)
 })
 
 server.on('error', (err) => logger.error('App failed to start from server.ts', err))

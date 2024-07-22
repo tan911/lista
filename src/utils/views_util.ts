@@ -1,4 +1,4 @@
-import { PanelsTopLeft, Users, ArrowLeftRight } from 'lucide-static'
+import { PanelsTopLeft, Users, ArrowLeftRight, LogOut, Settings } from 'lucide-static'
 
 export const meta = {
     title: 'Dashboard',
@@ -12,17 +12,38 @@ export const routes = [
         path: '/web/dashboard',
         label: 'Overview',
         icon: PanelsTopLeft,
+        account: [
+            { icon: Settings, name: 'Settings' },
+            {
+                icon: LogOut,
+                name: 'Sign out',
+            },
+        ],
     },
     {
         name: 'customers',
         path: '/web/dashboard/customers',
         label: 'Customers',
         icon: Users,
+        account: [
+            { icon: Settings, name: 'Settings' },
+            {
+                icon: LogOut,
+                name: 'Sign out',
+            },
+        ],
     },
     {
         name: 'transactions',
         path: '/web/dashboard/transactions',
         label: 'Transactions',
         icon: ArrowLeftRight,
+        account: [
+            { icon: Settings, name: 'Settings' },
+            {
+                icon: LogOut,
+                name: 'Sign out',
+            },
+        ],
     },
 ]

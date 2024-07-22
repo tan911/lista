@@ -74,4 +74,5 @@ export {
     getLoginView,
     getSignUpView,
     signUp,
+    login,
 } from './web_controller'

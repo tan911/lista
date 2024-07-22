@@ -74,3 +74,14 @@ export const SignUpSchema = z.object({
         .email(),
     password: PasswordSchema,
 })
+
+// Login schema
+export const LoginSchema = z.object({
+    email: z
+        .string()
+        .min(1, {
+            message: 'Email is required field',
+        })
+        .email(),
+    password: z.string().min(1, { message: 'Password is a required field' }),
+})

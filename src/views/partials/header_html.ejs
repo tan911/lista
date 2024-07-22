@@ -33,8 +33,35 @@
                         ><%= link_label %></button>
                 </div>
             <% } %>
-
-            <button type="button" class="hidden inline-block h-9 w-9 rounded-full bg-gray-400 md:flex"></button>
+             
+            <div id="user-profile" class="relative">
+                <button aria-expanded="false" type="button" class="hidden inline-block h-9 w-9 rounded-full bg-gray-200 border-2 border-gray-300 md:flex"></button>
+                <div data-toggle="profile" class="hidden absolute right-[-22px] bottom-[-90px] shadow-2xl bg-gray-100 rounded-xl border border-slate-300 p-2">
+                    <ul role="profile-menu" class="w-[200px]">
+                        <% routes.map((route) => { %>
+                            <% route.name === current_route && route.account.map(item => { %>
+                                <li>
+                                    <% if(['Sign out'].includes(item.name)) { %>
+                                        <div class="flex items-center cursor-pointer p-1">
+                                            <span class="w-5 h-5 mr-3">
+                                                <%- item.icon %>
+                                            </span>
+                                            <span><%= item.name %></span>
+                                        </div>
+                                    <% } else { %>
+                                        <a href="/web/dashboard/<%= item.name.toLowerCase() %>" class="flex p-1">
+                                            <span class="w-5 h-5 mr-3">
+                                                <%- item.icon %>
+                                            </span>
+                                            <span><%= item.name %></span>
+                                        </a>
+                                    <% } %>
+                                </li>
+                            <% }) %>
+                        <% }); %>
+                    </ul>
+                </div>
+            </div>
             <button data-toggle="expand" id="btn-nav-toggle" type="button" aria-expanded="false" aria-controls="nav-list-cta" class="btn-nav-bar ring-focus px-2 py-1 w-9 h-9 border border-['#E0Es0E0'] rounded-md md:hidden">
                 <span id="btn-nav-toggle-name" class="sr-only">Open menu button</span>
             </button>

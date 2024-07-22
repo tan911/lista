@@ -16,7 +16,7 @@ export async function getSignUpView(req: Request, res: Response) {
     })
 }
 
-// sign up with email and password
+// Sign up with email and password
 export async function signUp(req: Request, res: Response) {
     const isValid = await SignUpSchema.safeParseAsync(req.body)
 
@@ -57,6 +57,7 @@ export async function signUp(req: Request, res: Response) {
 
         return res.appendHeader('Set-Cookie', sessionCookie.serialize()).redirect('/web/dashboard')
     } catch (err) {
+        console.log(err, 'errr')
         return res.status(500).json({ message: 'Something went wrong!' })
     }
 }

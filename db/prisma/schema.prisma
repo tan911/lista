@@ -61,14 +61,14 @@ model Account {
 }
 
 model Session {
-  sessionToken String   @unique
-  userId       String
-  expires      DateTime
-  fresh        Boolean?
-  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id        String   @id @unique
+  userId    String
+  expiresAt DateTime
+  fresh     Boolean?
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  updatedAt DateTime @default(now()) @updatedAt
 }
 
 model VerificationToken {
