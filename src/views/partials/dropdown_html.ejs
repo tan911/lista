@@ -1,0 +1,14 @@
+<div data-dropdown="<%= dropdownId %>" class="relative">
+  <button data-visible="show" id="<%= dropdownId %>" class="<%= dropdownButtonStyle %>" aria-haspopup="true" aria-expanded="false">
+    <%= buttonLabel %>
+  </button>
+  <div id="<%= dropdownId %>-dropdown-menu" class="invisible opacity-0 absolute mt-[3px] shadow-xl bg-gray-100 rounded-xl border border-slate-300 p-2 <%= dropdownListContainerStyle %>" aria-labelledby="<%= dropdownId %>">
+    <ul class="w-full">
+      <% items.forEach(item => { %>
+        <li>
+          <a class="p-1.5 block hover:bg-gray-200 hover:rounded-md transition transition-opacity transition-transform" href="<%= item.href %>"><%= item.label %></a>
+        </li>
+      <% }) %>
+    </ul>
+  </div>
+</div>

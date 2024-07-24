@@ -51,5 +51,5 @@ export async function login(req: Request, res: Response) {
     return res
         .appendHeader('Set-Cookie', sessionCookie)
         .appendHeader('Location', '/web/dashboard')
-        .redirect('/web/dashboard')
+        .redirect(303, '/web/dashboard')
 }

@@ -2,11 +2,15 @@ import { PrismaClient } from '@prisma/client'
 export class CustomerService {
     constructor(private prisma: PrismaClient) {}
 
-    public async get() {
-        const customerCount = await this.prisma.customer.count()
+    public async get(id: string) {
+        const customerCount = await this.prisma.customer.count({
+            where: {
+                userId: id,
+            },
+        })
         const customer = await this.prisma.customer.findMany({
             where: {
-                userId: 'clxhllgxe00008aty1lvp8t3o', //test
+                userId: id,
             },
             include: {
                 transactions: true,

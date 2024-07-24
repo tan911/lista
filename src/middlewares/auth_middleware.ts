@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express'
 import { verifyRequestOrigin, User, Session } from 'lucia'
-import { lucia } from '../config/auth_config'
+import { lucia } from '@config'
 
 export function validateHeaders(req: Request, res: Response, next: NextFunction) {
     if (req.method === 'GET') {
