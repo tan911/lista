@@ -46,11 +46,10 @@ class EndpointFactory<TContext> {
     }
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 async function context(_res: Response) {
     const user = await prisma.user.findUnique({
         where: {
-            email: 'Gideon.Kemmer@yahoo.com',
+            email: _res.locals.user?.email,
         },
     })
     return { user, transaction }

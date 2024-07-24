@@ -4,7 +4,8 @@ import { routes, meta } from '@utils'
 import { customer, transaction } from '@services'
 
 export async function getCustomerView(req: Request, res: Response) {
-    const customers = await customer.get()
+    const userId = res.locals && res.locals.user ? res.locals.user.id : ''
+    const customers = await customer.get(userId)
 
     return res.render('pages/dashboard/customer_html', {
         routes,
@@ -24,7 +25,8 @@ export async function getCustomerView(req: Request, res: Response) {
 }
 
 export async function getCustomerModal(req: Request, res: Response) {
-    const customers = await customer.get()
+    const userId = res.locals && res.locals.user ? res.locals.user.id : ''
+    const customers = await customer.get(userId)
 
     if (req.query.show !== 'true') {
         return res.redirect('/web/dashboard/customers')

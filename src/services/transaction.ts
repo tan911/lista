@@ -17,15 +17,17 @@ export class TransactionService {
         })
     }
 
-    public async getRevenue() {
+    public async getRevenue(id: string) {
         const [cash, credit] = await this.prisma.$transaction([
             this.prisma.transaction.findMany({
                 where: {
+                    userId: id,
                     transactionType: 'cash',
                 },
             }),
             this.prisma.transaction.findMany({
                 where: {
+                    userId: id,
                     transactionType: 'credit',
                 },
             }),

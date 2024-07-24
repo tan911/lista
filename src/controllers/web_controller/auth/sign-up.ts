@@ -55,7 +55,9 @@ export async function signUp(req: Request, res: Response) {
         const session = await lucia.createSession(user.id, {})
         const sessionCookie = await lucia.createSessionCookie(session.id)
 
-        return res.appendHeader('Set-Cookie', sessionCookie.serialize()).redirect('/web/dashboard')
+        return res
+            .appendHeader('Set-Cookie', sessionCookie.serialize())
+            .redirect(303, '/web/dashboard')
     } catch (err) {
         console.log(err, 'errr')
         return res.status(500).json({ message: 'Something went wrong!' })

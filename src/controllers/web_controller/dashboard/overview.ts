@@ -3,8 +3,9 @@ import { routes, meta } from '@utils'
 import { transaction, customer } from '@services'
 
 export async function getOverview(req: Request, res: Response) {
-    const revenue = await transaction.getRevenue()
-    const customers = await customer.get()
+    const userId = res.locals && res.locals.user ? res.locals.user.id : ''
+    const revenue = await transaction.getRevenue(userId)
+    const customers = await customer.get(userId)
 
     return res.status(200).render('pages/dashboard/overview_html', {
         routes,
@@ -28,8 +29,10 @@ export async function getOverviewModal(req: Request, res: Response) {
         return res.redirect('/web/dashboard')
     }
 
-    const revenue = await transaction.getRevenue()
-    const customers = await customer.get()
+    const userId = res.locals && res.locals.user ? res.locals.user.id : ''
+
+    const revenue = await transaction.getRevenue(userId)
+    const customers = await customer.get(userId)
 
     return res.status(200).render('pages/dashboard/overview_html', {
         url: '/web/dashboard',
