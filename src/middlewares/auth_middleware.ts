@@ -27,9 +27,7 @@ export async function validateAuthSession(req: Request, res: Response, next: Nex
         res.locals.user = null
         res.locals.session = null
 
-        return res.status(401).json({
-            message: 'Unauthorize',
-        })
+        return res.redirect('/web/auth/login')
     }
 
     const { session, user } = await lucia.validateSession(sessionId)
