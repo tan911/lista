@@ -1,10 +1,35 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { authService } from '../services'
+
+export class Header {
+    public element: HTMLElement;
+    [key: string]: any
+    constructor(id: string) {
+        this.element = document.getElementById(`${id}-header`) as HTMLElement
+        if (this.element) {
+            this.element.onclick = this.action.bind(this)
+        }
+    }
+
+    public async signout() {
+        await authService.unsync()
+    }
+
+    private action(event: Event) {
+        const targetEl = event.target as HTMLElement
+        const action = targetEl.dataset.action
+        if (action) {
+            this[action]()
+        }
+    }
+}
+
 export class NavigationBar {
     public navId: string
     public navEl: HTMLElement
     private overlay = document.getElementById('overlay') as HTMLElement
     private sidebarEl = document.getElementById('nav-list-cta') as HTMLElement
     private navbarBtnEl = document.getElementById('btn-nav-toggle') as HTMLElement;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     [key: string]: any
 
     constructor(navId: string) {

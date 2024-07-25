@@ -6,7 +6,7 @@
     <ul class="w-full">
       <% items.forEach(item => { %>
         <li>
-          <a class="p-1.5 block hover:bg-gray-200 hover:rounded-md transition transition-opacity transition-transform" href="<%= item.href %>"><%= item.label %></a>
+          <a <%= item.action %> class="p-1.5 block hover:bg-gray-200 hover:rounded-md transition transition-opacity transition-transform" href="<%= item.href %>"><%= item.label %></a>
         </li>
       <% }) %>
     </ul>

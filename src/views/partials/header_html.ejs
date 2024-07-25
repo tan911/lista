@@ -1,10 +1,10 @@
-<header class="flex h-[64px] border-b border-['#E0Es0E0'] md:items-center md:justify-center">
+<header id="dashboard-header" class="flex h-[64px] border-b border-['#E0Es0E0'] md:items-center md:justify-center">
     <nav id="navbar" class="relative w-full max-w-[1440px] px-5 flex items-center justify-between md:px-10">
         <div class="w-[50%] md:flex md:items-center md:justify-between md:w-0">
             <a href="#" class="font-bold text-2xl tracking-tight md:mr-10"> Lista </a>
             <ul data-visible="false" id="nav-list-cta" class="absolute inset-y-0 left-[-1000px] h-screen z-[999] w-[70%] bg-white border border-r border-['#E0Es0E0'] pt-32 px-4 shadow-left-xl text-base transition-left duration-500 ease-in-out sm:w-[30%] md:h-0 md:static md:z-0 md:flex md:items-center md:gap-5 md:shadow-none md:w-full md:border-none md:p-0">
                 <div class="absolute bottom-10 left-4 right-4 mx-auto">
-                    <button aria-label="logout-button" type="button" class="btn-logout w-full max-w-content ring-focus bg-stone-800 text-white py-1.5 rounded-md flex items-center justify-center gap-2 md:hidden">
+                    <button data-action="signout" aria-label="logout-button" type="button" class="btn-logout w-full max-w-content ring-focus bg-stone-800 text-white py-1.5 rounded-md flex items-center justify-center gap-2 md:hidden">
                         <span class="ml-4">Logout</span>
                     </button>
                 </div>    
@@ -40,8 +40,8 @@
                 dropdownButtonStyle: 'hidden inline-block h-9 w-9 rounded-full bg-gray-200 border-2 border-gray-300 md:flex',
                 dropdownListContainerStyle: 'right-0 min-w-[160px]',
                 items: [
-                    { label: 'Settings', href: '/web/dashboard/settings' },
-                    { label: 'Sign Out', href: '#' }
+                    { label: 'Settings', href: '/web/dashboard/settings', action: '' },
+                    { label: 'Sign Out', href: '#', action: 'data-action=signout' }
                 ]
             }); %>
             
