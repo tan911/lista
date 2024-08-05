@@ -5,7 +5,7 @@
             Already have an account?
             <a href="/web/auth/login" class="underline underline-offset-2">Login.</a>
         </p>
-        <form>
+        <form data-controller="signup" data-signup-auth-message-outlet=".auth-status-message">
             <div class="mb-4 space-y-2">
                 <label for="name" class="text-sm text-slate-11 text-sm">Name</label>
                 <input
@@ -40,12 +40,12 @@
                 />
             </div>
             <button
-                data-action-account="signup"
+                data-action="signup#submit"
                 class="h-10 text-sm px-4 py-2 rounded-md font-semibold inline-flex items-center justify-center whitespace-nowrap w-full block bg-stone-900 text-white cursor-pointer disabled:cursor-not-allowed hover:bg-stone-800 disabled:hover:bg-stone-900 disabled:opacity-75"
                 type="submit"
-                disabled
             >
-                Create account
+                <i data-lucide="loader" id="lucide-icon" class="hidden"></i>
+                <span> Create account </span>
             </button>
         </form>
         <div class="my-6 flex items-center justify-center">
@@ -53,7 +53,7 @@
             <span class="mx-4 text-xs text-slate-11 font-normal">OR</span>
             <div aria-hidden="true" class="h-px w-full bg-gray-200" role="separator"></div>
         </div>
-        <form>
+        <form id="oauthSignup-form" onsubmit="event.preventDefault()">
             <button
                 type="button"
                 data-action-account="oauth"

@@ -10,7 +10,7 @@ const config: webpack.Configuration = {
     target: 'web',
     devtool: 'eval',
     watch: process.env.NODE_ENV !== 'production',
-    entry: './src/public/javascripts/index.ts',
+    entry: './src/public/javascripts/application.ts',
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist/src/public/javascripts'),

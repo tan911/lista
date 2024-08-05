@@ -17,7 +17,7 @@
         "strict": true,
         "target": "ESNext",
         "lib": ["dom", "DOM.Iterable"],
-        "types": ["vitest/globals"],
+        "types": ["vitest/globals", "node", "webpack-env"],
         "paths": {
             "@config": ["src/config/index.ts"],
             "@controllers": ["src/controllers/index.ts"],

@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@hotwired/stimulus':
+    specifier: ^3.2.2
+    version: 3.2.2
   '@lucia-auth/adapter-prisma':
     specifier: ^4.0.1
     version: 4.0.1(@prisma/client@5.15.0)(lucia@3.2.0)
@@ -41,9 +44,6 @@ dependencies:
   lucia:
     specifier: ^3.2.0
     version: 3.2.0
-  lucide-static:
-    specifier: ^0.399.0
-    version: 0.399.0
   morgan:
     specifier: ^1.10.0
     version: 1.10.0
@@ -64,6 +64,9 @@ devDependencies:
   '@faker-js/faker':
     specifier: ^8.4.1
     version: 8.4.1
+  '@hotwired/stimulus-webpack-helpers':
+    specifier: ^1.0.1
+    version: 1.0.1(@hotwired/stimulus@3.2.2)
   '@types/cors':
     specifier: ^2.8.17
     version: 2.8.17
@@ -85,6 +88,9 @@ devDependencies:
   '@types/webpack':
     specifier: ^5.28.5
     version: 5.28.5(esbuild@0.21.5)(webpack-cli@5.1.4)
+  '@types/webpack-env':
+    specifier: ^1.18.5
+    version: 1.18.5
   concurrently:
     specifier: ^8.2.2
     version: 8.2.2
@@ -501,6 +507,17 @@ packages:
     resolution: {integrity: sha512-XQ3cU+Q8Uqmrbf2e0cIC/QN43sTBSC8KF12u29Mb47tWrt2hAgBXSgpZMj4Ao8Uk0iJcU99QsOCaIL8934obCg==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0, npm: '>=6.14.13'}
     dev: true
+
+  /@hotwired/stimulus-webpack-helpers@1.0.1(@hotwired/stimulus@3.2.2):
+    resolution: {integrity: sha512-wa/zupVG0eWxRYJjC1IiPBdt3Lruv0RqGN+/DTMmUWUyMAEB27KXmVY6a8YpUVTM7QwVuaLNGW4EqDgrS2upXQ==}
+    peerDependencies:
+      '@hotwired/stimulus': '>= 3.0'
+    dependencies:
+      '@hotwired/stimulus': 3.2.2
+    dev: true
+
+  /@hotwired/stimulus@3.2.2:
+    resolution: {integrity: sha512-eGeIqNOQpXoPAIP7tC1+1Yc1yl1xnwYqg+3mzqxyrbE5pg5YFBZcA6YoTiByJB6DKAEsiWtl6tjTJS4IYtbB7A==}
 
   /@humanwhocodes/module-importer@1.0.1:
     resolution: {integrity: sha512-bxveV4V8v5Yb4ncFTT3rPSgZBOpCkjfK0y4oVVVJwIuDVBRMDXrPyXRL988i5ap9m9bnyEEjWfm5WkBmtffLfA==}
@@ -1560,6 +1577,10 @@ packages:
   /@types/triple-beam@1.3.5:
     resolution: {integrity: sha512-6WaYesThRMCl19iryMYP7/x2OVgCtbIVflDGFpWnb9irXI3UjYE4AzmYuiUKY1AJstGijoY+MgUszMgRxIYTYw==}
     dev: false
+
+  /@types/webpack-env@1.18.5:
+    resolution: {integrity: sha512-wz7kjjRRj8/Lty4B+Kr0LN6Ypc/3SymeCCGSbaXp2leH0ZVg/PriNiOwNj4bD4uphI7A8NXS4b6Gl373sfO5mA==}
+    dev: true
 
   /@types/webpack@5.28.5(esbuild@0.21.5)(webpack-cli@5.1.4):
     resolution: {integrity: sha512-wR87cgvxj3p6D0Crt1r5avwqffqPXUkNlnQ1mjU93G7gCuFjufZR4I6j8cz5g1F1tTYpfOOFvly+cmIQwL9wvw==}
@@ -3788,10 +3809,6 @@ packages:
     resolution: {integrity: sha512-eXMxXwk6hqtjRTj4W/x3EnTUtAztLPm0p2N2TEBMDEbakDLXiYnDQ9z/qahjPdPdhPguQc+vwO0/88zIWxlpuw==}
     dependencies:
       oslo: 1.2.0
-    dev: false
-
-  /lucide-static@0.399.0:
-    resolution: {integrity: sha512-RkR/IvJ9PUtRL+3jXmTesvqtQ91imaM2jFv33R7cfr+3dZdOAERQ4tI4QlAAinEglckKfo7wSMR++RTmDveW9g==}
     dev: false
 
   /magic-string@0.30.10:

@@ -1,5 +1,9 @@
 <%- include(template.render_layouts+'auth_html'); %>
-<div data-visible="hidden" id="auth-message" class="invisible flex items-center gap-3 mx-auto w-full max-w-[450px] bg-red-200 border border-red-400 px-4 py-6 text-red-500 rounded-md mt-12 sm:mt-16 md:mt-26 transition-all duration-300">
+<div class="auth-status-message invisible flex items-center gap-3 mx-auto w-full max-w-[450px] bg-red-200 border border-red-400 px-4 py-6 text-red-500 rounded-md mt-12 sm:mt-16 md:mt-26 transition-all duration-300"
+ data-controller="auth-message"
+ data-auth-message-show-class="visible"
+ data-auth-message-hide-class="invisible"
+>
 	<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-triangle-alert">
 		<path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/>
 		<path d="M12 9v4"/>
@@ -8,8 +12,8 @@
 	<span></span>
 </div>
 <% if(route === 'login')  { %>
-<%- include('./login_html'); %>
+<%- include('./signin_html'); %>
 <% } %>
 <% if (route === 'signup') { %>
-<%- include('./sign_in_html'); %>
+<%- include('./signup_html'); %>
 <% } %>

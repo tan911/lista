@@ -5,7 +5,11 @@
             Don't have an account?
             <a href="/web/auth/signup" class="underline underline-offset-2">Sign up.</a>
         </p>
-        <form>
+        <form
+            data-controller="signin"
+            data-signin-auth-message-outlet=".auth-status-message"
+            data-signin-loading-class="animate-spin text-white w-5 h-5 cursor-busy"
+        >
             <div class="mb-4 space-y-2">
                 <label for="email" class="text-sm text-slate-11 text-sm">Email</label>
                 <input
@@ -37,12 +41,12 @@
                 />
             </div>
             <button
-                data-action-account="login"
-                class="h-10 text-sm px-4 py-2 rounded-md font-semibold inline-flex items-center justify-center whitespace-nowrap w-full block bg-stone-900 text-white cursor-pointer disabled:cursor-not-allowed hover:bg-stone-800 disabled:opacity-75"
+                data-action="signin#submit"
                 type="submit"
-                disabled
+                class="h-10 text-sm px-4 py-2 rounded-md font-semibold inline-flex gap-2 items-center justify-center whitespace-nowrap w-full block bg-stone-900 text-white cursor-pointer disabled:cursor-not-allowed hover:bg-stone-800 disabled:opacity-75"
             >
-                Continue
+                <i data-lucide="loader-circle" id="lucide-icon" class="hidden"></i>
+                <span>Continue</span>
             </button>
         </form>
         <div class="my-6 flex items-center justify-center">
@@ -52,6 +56,7 @@
         </div>
         <form>
             <button
+                type="submit"
                 class="h-10 text-sm px-4 py-2 inline-flex items-center justify-center w-full border border-['#E0Es0E0'] rounded-md shadow-sm cursor-pointer whitespace-nowrap font-medium hover:bg-gray-50"
             >
                 <svg

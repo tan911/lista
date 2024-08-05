@@ -83,11 +83,11 @@ dialog {
     }
 
     .ac-modal-btn-close {
-        @apply ring-focus self-start rounded-md text-stone-700 transition-all ease-in-out duration-300 p-1 md:p-1.5;
+        @apply self-start rounded-md text-stone-700 transition-all ease-in-out duration-300 p-1 md:p-1.5;
     }
 
     .ac-key-esc {
-        @apply p-1.5 bg-gray-100 rounded-md ml-1 font-light tracking-wide shadow-key;
+        @apply p-1.5 bg-gray-100 rounded-md font-light tracking-wide shadow-key;
     }
 
     .ac-modal-input {

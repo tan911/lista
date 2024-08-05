@@ -1,8 +1,9 @@
 <dialog
-    id="add-credit-modal"
+    data-controller="add-credit"
+    data-add-credit-show-class="flex"
     aria-labelledby="add-credit-title"
     aria-describedby="add-credit-desc"
-    class="fixed top-0 right-0 left-0 m-0 w-full md:inset-0 h-full max-h-full max-w-screen bg-black/40 z-[100]"
+    class="credit-modal justify-center items-center fixed top-0 right-0 left-0 m-0 w-full md:inset-0 h-full max-h-full max-w-screen bg-black/40 z-[100]"
 >
     <div class="relative w-max-content h-max-content animate-modal">
         <div class="relative flex flex-col p-6 bg-white rounded-xl shadow-xs">
@@ -19,18 +20,15 @@
                     </p>
                 </div>
                 <button
-                    data-action="close"
-                    id="btn-add-credit-modal-close"
+                    data-action="add-credit#close"
                     aria-label="close"
                     class="ac-modal-btn-close"
                     value="close"
                 >
-                    <span class="font-light text-md">Close</span>
                     <span class="ac-key-esc text-sm hidden md:inline-block">ESC</span>
                 </button>
             </div>
             <form
-                id="add-credit-form"
                 method="dialog"
                 class="w-full py-5 grid grid-cols-1 md:grid-cols-2 md:gap-x-6 md:gap-y-3"
             >
@@ -40,6 +38,7 @@
                         id="creditors"
                         type="text"
                         name="creditors"
+                        data-add-credit-target="creditors"
                         placeholder="Enter creditor's name"
                         class="transition-outline ease-in duration-300 ac-modal-input"
                         aria-describedby="creditors-error-message"
@@ -56,12 +55,14 @@
                         id="products"
                         type="text"
                         name="products"
+                        data-add-credit-target="products"
                         placeholder="Enter product name"
                         class="transition-outline ease-in duration-300 ac-modal-input"
                         aria-describedby="products-error-message"
                     />
                     <span
                         id="products-error-message"
+                        data-add-credit-target="products-error-message"
                         aria-live="polite"
                         class="hidden absolute left-0 bottom-[-13px] text-xs text-red-500 font-bold tracking-normal"
                     ></span>
@@ -71,6 +72,7 @@
                     <input
                         id="email"
                         type="email"
+                        data-add-credit-target="email"
                         placeholder="Enter email address"
                         name="email"
                         class="transition-outline ease-in duration-300 ac-modal-input"
@@ -86,6 +88,7 @@
                     <label for="category" class="block mb-1 text-sm">Category</label>
                     <select
                         name="category"
+                        data-add-credit-target="category"
                         id="category"
                         name="category"
                         class="transition-outline ease-in duration-300 ring-focus border border-['#E0Es0E0'] w-full px-2 py-1.5 rounded-md"
@@ -106,6 +109,7 @@
                         <label for="quantity" class="block mb-1 text-sm">Quantity</label>
                         <input
                             id="quantity"
+                            data-add-credit-target="quantity"
                             type="text"
                             name="quantity"
                             placeholder="Enter quantity"
@@ -122,6 +126,7 @@
                         <input
                             id="date"
                             type="date"
+                            data-add-credit-target="date"
                             placeholder="date"
                             name="date"
                             class="transition-outline ease-in duration-300 ac-modal-input"
@@ -135,20 +140,15 @@
                 </div>
                 <div class="flex flex-col col-span-2 mt-10 md:mt-20 md:place-self-end md:flex-row">
                     <button
-                        data-action="cancel"
+                        data-action="add-credit#cancel"
                         type="button"
-                        id="btn-add-credit-modal-cancel"
-                        aria-label="cancel"
-                        value="cancel"
                         class="font-medium text-white py-2 px-16 rounded-md border border-['#E0Es0E0'] bg-red-900 hover:bg-red-800 focus:ring focus:ring-offset-2 focus:ring-2 focus:ring-red-900 focus:outline-none mb-2 md:mr-4 md:mb-0"
                     >
                         Cancel
                     </button>
                     <button
-                        data-action="add"
+                        data-action="add-credit#add"
                         type="submit"
-                        aria-label="add"
-                        value="add"
                         class="ring-focus bg-stone-900 hover:bg-stone-800 text-white py-2 px-16 rounded-md"
                     >
                         Add

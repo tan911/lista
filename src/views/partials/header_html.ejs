@@ -14,7 +14,6 @@
                     <% routes.map((route) => { %>
                         <li class="flex items-center gap-3 mb-5 md:m-0">
                             <div aria-hidden="true" class="bg-gray-100 p-1.5 rounded-md md:hidden">
-                                <%- route.icon %>
                             </div>
                             <a href="<%= route.path %>"
                                 class="<%= route.name === current_route ? 'nav-list_active' : 'nav-list' %>"
@@ -26,9 +25,9 @@
         <div class="w-auto flex items-center gap-2 md:ml-auto md:justify-center md:ml-auto">
             
             <% if(is_button === 'true') { %>
-                <div class="md:mr-10">
+                <div data-controller="credit-btn" data-credit-btn-add-credit-outlet=".credit-modal" class="md:mr-10">
                     <button
-                        id="btn-add-credit-modal-open"
+                        data-action="credit-btn#open"
                         class="btn-add-credit text-sm block py-2 px-3 rounded-md bg-neutral-950 text-neutral-100 font-medium cursor-pointer md:text-base md:py-1.5 hover:bg-neutral-800"
                         ><%= link_label %></button>
                 </div>
