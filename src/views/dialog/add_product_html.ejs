@@ -1,0 +1,56 @@
+<dialog
+    data-controller="add-product"
+    data-add-product-show-class="flex"
+    data-add-product-toast-outlet=".toast-status"
+    aria-labelledby="add-product-title"
+    class="product-modal justify-center items-center fixed top-0 right-0 left-0 m-0 w-full md:inset-0 h-full max-h-full max-w-screen bg-black/40 z-[100]"
+>
+    <div class="relative w-max-content h-max-content animate-modal">
+        <div class="w-[450px] relative flex flex-col p-6 bg-white rounded-xl shadow-xs">
+            <div class="mb-5 flex justify-between items-center">
+                <h3 id="add-product-title" class="font-medium text-lg">New product</h3>
+                <button
+                    data-action="add-product#close"
+                    type="button"
+                    class="cursor-pointer p-1 text-gray-400/90 rounded-md hover:drop-shadow-sm hover:bg-gray-100"
+                >
+                    <i data-lucide="x" id="lucide-icon" class="w-6 h-6"></i>
+                </button>
+            </div>
+            <form method="dialog" class="flex flex-col gap-3">
+                <div class="w-full border pt-3 px-3 pb-2 rounded-md shadow-sm">
+                    <label for="name" class="block text-gray-500 text-sm font-light">Name</label>
+                    <input
+                        id="name"
+                        type="text"
+                        name="name"
+                        class="w-full outline-none text-md"
+                        placeholder="Ex. Lemon juice"
+                    />
+                </div>
+                <div class="w-full border pt-3 px-3 pb-2 rounded-md shadow-sm">
+                    <label for="price" class="block text-gray-500 text-sm font-light">Price</label>
+                    <input
+                        id="price"
+                        type="text"
+                        name="price"
+                        class="w-full outline-none text-md"
+                        placeholder="$ 0.00"
+                    />
+                </div>
+                <button
+                    data-action="add-product#add"
+                    type="submit"
+                    class="mt-2 bg-stone-900 px-2 py-3 w-full rounded-md text-white flex items-center justify-center"
+                >
+                    <i
+                        data-lucide="loader-circle"
+                        id="lucide-icon"
+                        class="loader hidden animate-spin cursor-busy"
+                    ></i>
+                    <span> Add product </span>
+                </button>
+            </form>
+        </div>
+    </div>
+</dialog>

@@ -85,3 +85,9 @@ export const LoginSchema = z.object({
         .email(),
     password: z.string().min(1, { message: 'Password is a required field' }),
 })
+
+// Product schema
+export const CreateProductSchema = z.object({
+    name: z.string(),
+    price: z.number().positive(),
+})

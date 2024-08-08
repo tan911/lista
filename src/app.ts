@@ -7,7 +7,7 @@ import cors from 'cors'
 
 import { createLogger } from '@lib'
 import { template } from '@utils'
-import { transactionRouter, webRouter } from '@routes'
+import { transactionRouter, webRouter, productRouter } from '@routes'
 import {
     errorHandler,
     errorNotFoundHandler,
@@ -61,6 +61,7 @@ app.use('/api/v1', validateHeaders, validateAuthSession)
 
 // Api routes
 app.use('/api/v1/transactions', transactionRouter)
+app.use('/api/v1/product', productRouter)
 
 // Error handlers
 app.use(errorNotFoundHandler)

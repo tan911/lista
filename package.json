@@ -7,7 +7,7 @@
         "test": "vitest run",
         "build": "pnpm build:server && pnpm build:client",
         "start": "node dist/src/server.js",
-        "dev": "conc \"tsx --watch src/server.ts\" \"pnpm client:script\" \"pnpm client:style -w\" \"pnpm build:server --watch\"",
+        "dev": "conc \"tsx --watch src/server.ts\" \"pnpm client:script -w\" \"pnpm client:style -w\" \"pnpm build:server --watch\"",
         "clean": "rm -rf node_modules && rm -rf dist",
         "lint": "tsc --noEmit && eslint src/**/*.ts --fix",
         "format": "prettier . --write",

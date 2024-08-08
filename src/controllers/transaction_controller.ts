@@ -1,4 +1,4 @@
-import { transaction } from './../services'
+import { transaction } from '@services'
 
 export class TransactionController {
     async getUserTransaction(id = 'clxhllgxe00008aty1lvp8t3o') {

@@ -20,4 +20,9 @@ export const routes = [
         path: '/web/dashboard/transactions',
         label: 'Transactions',
     },
+    {
+        name: 'products',
+        path: '/web/dashboard/products',
+        label: 'Products',
+    },
 ]

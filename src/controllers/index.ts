@@ -1,12 +1,11 @@
 import { prisma } from '@db'
 import { Request, Response, NextFunction } from 'express'
-import { TransactionController } from './transaction_controller'
+import { product, transaction } from '@services'
 
 /**
  * API CONTROLLER
  *
  */
-const transaction = new TransactionController()
 
 type Ouput<TInput, TOuput, TContext> = {
     (args: { ctx: TContext; req: Request; input: TInput }): Promise<TOuput>
@@ -52,7 +51,7 @@ async function context(_res: Response) {
             email: _res.locals.user?.email,
         },
     })
-    return { user, transaction }
+    return { user, transaction, product }
 }
 
 export const endpoint = new EndpointFactory(context)
@@ -72,6 +71,7 @@ export {
     getCustomerById,
     getLoginView,
     getSignUpView,
+    getProductView,
     signUp,
     login,
     logout,

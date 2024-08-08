@@ -4,11 +4,31 @@
     <body class="m-h-screen antialised w-full">
 
         <%- include(template.render_partials+'header_html', { link_to: header.link_to, link_label: header.link_label, is_button: header.is_button }); -%>
-
-        <%- include(template.render_dialogs+'add_credit_html'); -%>
         
-        <div id="overlay" class="invisible opacity-0 z-[5] absolute top-0 right-0 left-0 m-0 w-full md:inset-0 h-full max-h-full max-w-screen bg-black/40 transition-opacity ease-in-out duration-300"></div>
-
+        <div id="overlay" 
+            class="invisible opacity-0 z-[5] absolute top-0 right-0 left-0 m-0 w-full md:inset-0 h-full max-h-full max-w-screen bg-black/40 transition-opacity ease-in-out duration-300">
+        </div>
+        <div 
+            data-controller="toast"
+            data-toast-show-class="show"
+            id="toast" 
+            class="toast-status max-w-content p-3 shadow-sm border rounded-lg fixed right-10 top-10 z-[1000] bg-white flex items-center gap-2"
+            >
+            <i id="lucide-icon" class="toast-icon w-6 h-6 text-white" data-lucide="circle-check" fill="#16a34a"></i>
+            <span class="text-base"></span>
+        </div>
         <script type="module" src="/src/public/javascripts/bundle.js"></script>
+        <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+        <script defer type="module">
+            lucide.createIcons({
+                'file-x': lucide.icons.FileX,
+                'search': lucide.icons.Search,
+                'circle-plus': lucide.icons.CirclePlus,
+                'circle-check': lucide.icons.CircleCheck,
+                'loader-circle': lucide.icons.LoaderCircle,
+                'file': lucide.icons.File,
+                'x': lucide.icons.X
+            });
+        </script>
     </body>
 </html>

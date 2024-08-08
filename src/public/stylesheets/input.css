@@ -8,6 +8,7 @@ body {
     font-weight: 400;
     font-style: normal;
     font-variation-settings: 'slnt' 0;
+    background-color: #f9fafb;
 }
 
 dialog {
@@ -64,12 +65,73 @@ dialog {
     height: 18px;
 }
 
+/* toast */
+
+#toast {
+    visibility: hidden;
+}
+
+#toast.show {
+    visibility: visible;
+    -webkit-animation:
+        fadein 0.5s,
+        fadeout 0.5s 5s;
+    animation:
+        fadein 0.5s,
+        fadeout 0.5s 5s;
+}
+
 @keyframes blow-up {
     0% {
         transform: scale(0.5);
     }
     100% {
         transform: scale(1);
+    }
+}
+
+/* Animations to fade the toast in and out */
+@-webkit-keyframes fadein {
+    from {
+        top: 0;
+        opacity: 0;
+    }
+    to {
+        top: 30px;
+        opacity: 1;
+    }
+}
+
+@keyframes fadein {
+    from {
+        top: 0;
+        opacity: 0;
+    }
+    to {
+        top: 30px;
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeout {
+    from {
+        top: 30px;
+        opacity: 1;
+    }
+    to {
+        top: 0;
+        opacity: 0;
+    }
+}
+
+@keyframes fadeout {
+    from {
+        top: 30px;
+        opacity: 1;
+    }
+    to {
+        top: 0;
+        opacity: 0;
     }
 }
 
@@ -114,6 +176,6 @@ dialog {
     }
 
     .search-input {
-        @apply ring-focus w-full border border-b-['#E0Es0E0'] rounded-md pr-3 pl-8 py-2;
+        @apply ring-focus w-full border border-b-['#E0Es0E0'] rounded-lg pr-3 pl-8 py-2;
     }
 }

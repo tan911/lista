@@ -1,0 +1,15 @@
+<div data-controller="<%= data_name %>" class="shadow-sm w-full text-sm relative md:w-auto">
+    <label for="search" class="sr-only"><%= data_label %></label>
+    <input
+        id="search"
+        type="text"
+        name="search"
+        class="search-input sm:w-[300px] md:w-[200px] lg:w-[300px]"
+        placeholder="<%= data_placeholder %>"
+    />
+    <i
+        data-lucide="search"
+        id="lucide-icon"
+        class="h-4 w-4 absolute top-0 bottom-0 left-2.5 my-auto text-gray-500"
+    ></i>
+</div>

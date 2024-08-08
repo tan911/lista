@@ -1,0 +1,68 @@
+<%- include(template.render_layouts+'/dashboard_html'); -%>
+<main class="w-full max-w-[1440px] mx-auto px-5 md:px-10">
+    <div class="my-5 flex justify-between items-center">
+				<%- include(template.render_partials+'search_bar_html', {
+					data_name: 'search-products',
+					data_label: 'Search Product',
+					data_placeholder: 'Search products...'
+				}) -%>
+        <div class="flex items-center gap-3">
+					<div>
+						<button class="flex items-center gap-1 border bg-white text-stone-900 px-2.5 py-2 rounded-lg hover:opacity-80">
+							<i data-lucide="file" id="lucide-icon" class="h-4 w-4 text-stone-900"></i>
+							<span class="text-sm">Export</span>
+						</button>
+					</div>
+					<div data-controller="product-btn" data-product-btn-add-product-outlet=".product-modal">
+						<button data-action="product-btn#open" class="flex items-center gap-1 border bg-white text-stone-900 px-2.5 py-2 rounded-lg hover:opacity-80">
+							<i data-lucide="circle-plus" id="lucide-icon" class="h-4 w-4 text-stone-900"></i>
+							<span class="text-sm font-medium">Add Product</span>
+						</button>
+					</div>
+				</div>
+    </div>
+    <div class="bg-white shadow-sm w-full h-full max-h-[700px] border border-b-['#E0Es0E0'] rounded-lg">
+        <div class="px-3 pt-3 md:px-6 md:pt-6">
+            <h3 class="font-bold text-xl md:text-2xl">Products</h3>
+            <p>Manage your products</p>
+        </div>
+        <div class="p-3 md:p-6">
+            <table class="w-full table-auto min-w-full text-sm">
+                <thead>
+                    <tr>
+                        <th scope="col" class="h-12 text-left px-20 py-4 whitespace-nowrap">Name</th>
+                        <th scope="col" class="h-12 text-left py-4 whitespace-nowrap">Price</th>
+                        <th scope="col" class="h-12 text-left py-4 whitespace-nowrap">Created at</th>
+                    </tr>
+                </thead>
+								<tbody class="h-60 relative">
+									<% if (products.length !== 0) { %>		
+											<% products.map((product) => { %>
+												<tr class="border-b border-['#E0Es0E'] hover:bg-gray-100 cursor-pointer">
+													<td class="flex items-center gap-5 px-6 py-4 pl-1 align-middle sm:p-4 sm:pl-3">
+														<div class="hidden h-12 w-12 rounded-md bg-gray-200 md:visible md:flex md:items-center md:justify-center"></div>
+														<div class="font-medium whitespace-nowrap"><%= product.name %></div>
+													</td>
+													<td><%= product.price %></td>
+													<% const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };%>
+													<td class="align-middle px-6 py-4 whitespace-nowrap sm:w-auto sm:p-4p"><%= new Date(product.createdAt).toLocaleDateString("en-US", options) %></td>
+												</tr>
+											<% }); %>
+										<% } else { %>
+											<tr class="h-full bg-gray-50 absolute inset-0 m-auto text-center rounded-md">
+												<td class="h-full w-full flex items-center justify-center m-auto">
+													<div class="m-auto flex flex-col gap-2 items-center">
+														<i data-lucide="file-x" id="lucide-icon" class="text-gray-300 h-16 w-16 opacity-75"></i>
+														<span class="text-gray-400">Data not available.</span>
+													</div>
+												</td>
+											</tr>
+										<% } %>
+								</tbody>
+            </table>
+        </div>
+        <%- include(template.render_partials+'pagination_html'); -%>
+    </div>
+</main>
+
+<%- include(template.render_dialogs+'add_product_html'); -%>

@@ -95,12 +95,12 @@ model Customer {
 model Product {
   id               String            @id @default(cuid())
   name             String
-  description      String?
   price            Float
-  stockQuantity    Int
   userId           String
   user             User              @relation(fields: [userId], references: [id], onDelete: Cascade)
   transactionItems TransactionItem[]
+
+  createdAt DateTime @default(now())
 }
 
 model Transaction {

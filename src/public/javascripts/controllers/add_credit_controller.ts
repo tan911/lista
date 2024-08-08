@@ -48,7 +48,6 @@ export default class AddCredit extends Controller<HTMLDialogElement> {
         }
 
         const parsedInputs = FormSchema.safeParse(inputs)
-        console.log()
         if (parsedInputs.success) {
             //
         } else {
